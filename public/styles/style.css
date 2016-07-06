@@ -1,0 +1,58 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Aleo';
+	color: #fff;
+}
+.init {
+	display:flex;
+	overflow: hidden;
+	height: 100vh;
+}
+
+.container {
+	display:flex;
+	overflow: hidden;
+}
+
+.country-panel {
+	width: 33%;
+	margin: 0;
+	padding: 10px;
+	background-color: #2c3e50;
+;}
+.film-panel {
+	width: 33%;
+	margin: 0;
+	padding: 10px;
+	background-color: #eb9532;
+}
+.food-panel {
+	width: 33%;
+	margin: 0;
+	padding: 10px;
+	background-color: #26a65b;
+}
+.travel-panel {
+	width: 33%;
+	margin: 0;
+	padding: 10px;
+	background-color: #22a7f0;
+}
+.highlight {
+	font-weight: bold;
+}
+.box {
+	padding: 5px;
+	border-top: 1px solid #fff;
+	margin: 0px;
+}
+img {
+	max-width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+ul {
+	list-style-type: none;
+}

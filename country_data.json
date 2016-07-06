@@ -1,0 +1,356 @@
+[
+
+{
+  "_id": "56c67449ed010c1b1218dafe",
+  "countryName": "Brazil",
+  "food": [
+    {
+      "url": "http://www.whats4eats.com/fish/vatapa-recipe",
+      "title": "Vatapá",
+      "img": "http://www.whats4eats.com/files/fish-vatapa-wikipedia.jpg",
+      "teaser": "Vatapá is one of the classic dishes of Brazilian cuisine. It hails from Bahia state on the northeast coast where many of the dishes have African origins. A thick version is often served as a filling for acaraj&eacute; patties.",
+      "averageRating": "3.8"
+    }
+  ],
+  "films": [
+    {
+      "Title": "Frances Ha",
+      "Year": "2012",
+      "Genre": "Comedy, Drama, Romance",
+      "Director": "Noah Baumbach",
+      "Actors": "Greta Gerwig, Mickey Sumner, Michael Esper, Adam Driver",
+      "Plot": "A story that follows a New York woman (who doesn't really have an apartment), apprentices for a dance company (though she's not really a dancer), and throws herself headlong into her dreams, even as their possibility dwindles.",
+      "Language": "English",
+      "Country": "USA, Brazil",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BOTY0NDQ2NzQ2N15BMl5BanBnXkFtZTcwMTU0OTkwOQ@@._V1_SX300.jpg",
+      "imdbRating": "7.4",
+      "imdbID": "tt2347569"
+    },
+    {
+      "Title": "Elite Squad",
+      "Year": "2007",
+      "Genre": "Action, Crime, Drama",
+      "Director": "José Padilha",
+      "Actors": "Wagner Moura, André Ramiro, Caio Junqueira, Milhem Cortaz",
+      "Plot": "1997, Captain Nascimento has to find a substitute for his occupation while trying to take down drug dealers and criminals before the Pope comes to Rio de Janeiro, Brazil.",
+      "Country": "Brazil",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTI1Mzc5NjI4Nl5BMl5BanBnXkFtZTcwNzYyMTQ5MQ@@._V1_SX300.jpg",
+      "imdbRating": "8.1",
+      "imdbID": "tt0861739"
+    },
+    {
+      "Title": "Mistress America",
+      "Year": "2015",
+      "Genre": "Comedy",
+      "Director": "Noah Baumbach",
+      "Actors": "Nat Baldwin, Juliet Brett, Andrea Chen, Michael Chernus",
+      "Plot": "A lonely college freshman's life is turned upside down by her impetuous, adventurous soon-to-be stepsister.",
+      "Country": "USA, Brazil",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMjEzNzgzNDgzNV5BMl5BanBnXkFtZTgwODcyMjk4NTE@._V1_SX300.jpg",
+      "imdbRating": "6.8",
+      "imdbID": "tt2872462"
+    },
+    {
+      "Title": "The Witch",
+      "Year": "2015",
+      "Genre": "Horror",
+      "Director": "Robert Eggers",
+      "Actors": "Anya Taylor-Joy, Ralph Ineson, Kate Dickie, Harvey Scrimshaw",
+      "Plot": "A family in 1630s New England is torn apart by the forces of witchcraft, black magic and possession.",
+      "Country": "Canada, USA",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTY4MTU2NjMyNV5BMl5BanBnXkFtZTgwMzUwMDk4NzE@._V1_SX300.jpg",
+      "imdbRating": "7.3",
+      "imdbID": "tt4263482"
+    },
+    {
+      "Title": "Anaconda",
+      "Year": "1997",
+      "Genre": "Action, Adventure, Horror",
+      "Director": "Luis Llosa",
+      "Actors": "Jennifer Lopez, Ice Cube, Jon Voight, Eric Stoltz",
+      "Plot": "A \"National Geographic\" film crew is taken hostage by an insane hunter, who takes them along on his quest to capture the world's largest - and deadliest - snake.",
+      "Country": "USA, Brazil, Peru",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTMzMTU5NjcxNl5BMl5BanBnXkFtZTcwMzE2NDU2MQ@@._V1_SX300.jpg",
+      "imdbRating": "4.6",
+      "imdbID": "tt0118615"
+    },
+    {
+      "Title": "The Salt of the Earth",
+      "Year": "2014",
+      "Genre": "Documentary, Biography",
+      "Director": "Juliano Ribeiro Salgado, Wim Wenders",
+      "Actors": "Sebastião Salgado, Wim Wenders, Lélia Wanick Salgado, Juliano Ribeiro Salgado",
+      "Plot": "The life and work of photographer Sebastião Salgado, who has spent forty years documenting deprived societies in hidden corners of the world.",
+      "Country": "France, Brazil, Italy",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BNjkyNjI3ODc0Ml5BMl5BanBnXkFtZTgwMTU0MjM2NDE@._V1_SX300.jpg",
+      "imdbRating": "8.4",
+      "imdbID": "tt3674140"
+    }
+  ],
+  "travel": [ 
+    { 
+      "url" : "http://www.lonelyplanet.com/brazil/sights/landmarks-monuments/cristo-redentor/item-a-394929-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/48e9f3e82d4963e378956b7f4f20ea2b-cristo-redentor.jpg", 
+      "travelCategory" : " Landmarks & Monuments ", 
+      "sightName" : " Cristo Redentor ", 
+      "sightDescription" : "  Standing atop Corcovado (which means ‘hunchback’), Cristo Redentor gazes out over Rio, a placid expression on his well-crafted face...  " 
+    }, 
+    { 
+      "url" : "http://www.lonelyplanet.com/brazil/sights/parks-gardens/parque-nacional-da-tijuca/item-a-1269053-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/assets/image/eff8b9754815312d10aaee2b38783917ab3f5d3a41f0aa53ae59bd25923579ee/7743bb0a937f49f6a8c2f2eb92a25b81510627226da4bb5e6effb068bfc5cf88.jpg", 
+      "travelCategory" : " Parks & Gardens ", 
+      "sightName" : " Parque Nacional da Tijuca ", 
+      "sightDescription" : "  The Tijuca is all that's left of the Atlantic rainforest that once surrounded Rio de Janeiro...  " 
+    }
+  ]
+},
+{
+  "_id": "56c3ea966d6f97940f2b5332",
+  "countryName": "Mexico",
+  "films": [
+    {
+      "Title": "Pan's Labyrinth",
+      "Year": "2006",
+      "Genre": "Drama, Fantasy, War",
+      "Director": "Guillermo del Toro",
+      "Actors": "Ivana Baquero, Sergi López, Maribel Verdú, Doug Jones",
+      "Plot": "In the falangist Spain of 1944, the bookish young stepdaughter of a sadistic army officer escapes into an eerie but captivating fantasy world.",
+      "Country": "Spain, Mexico, USA",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTU3ODg2NjQ5NF5BMl5BanBnXkFtZTcwMDEwODgzMQ@@._V1_SX300.jpg",
+      "imdbRating": "8.2",
+      "imdbID": "tt0457430"
+    },
+    {
+      "Title": "Amores Perros",
+      "Year": "2000",
+      "Genre": "Drama, Thriller",
+      "Director": "Alejandro González Iñárritu",
+      "Actors": "Emilio Echevarría, Gael García Bernal, Goya Toledo, Álvaro Guerrero",
+      "Plot": "A horrific car accident connects three stories, each involving characters dealing with loss, regret, and life's harsh realities, all in the name of love.",
+      "Country": "Mexico",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMjIyNTA5MzQ5N15BMl5BanBnXkFtZTcwNjIyNTgxMQ@@._V1_SX300.jpg",
+      "imdbRating": "8.1",
+      "imdbID": "tt0245712"
+    },
+    {
+      "Title": "Chappie",
+      "Year": "2015",
+      "Genre": "Action, Crime, Sci-Fi",
+      "Director": "Neill Blomkamp",
+      "Actors": "Sharlto Copley, Dev Patel, Ninja, Yo-Landi Visser",
+      "Plot": "In the near future, crime is patrolled by a mechanized police force. When one police droid, Chappie, is stolen and given new programming, he becomes the first robot with the ability to think and feel for himself.",
+      "Country": "USA, Mexico",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTUyNTI4NTIwNl5BMl5BanBnXkFtZTgwMjQ4MTI0NDE@._V1_SX300.jpg",
+      "imdbRating": "6.9",
+      "imdbID": "tt1823672"
+    }
+  ],
+  "food": [
+    {
+      "url": "http://www.whats4eats.com/soups/pozole-recipe",
+      "title": "Pozole",
+      "img": "http://www.whats4eats.com/files/soups-pozole-blanco-wikipedia-thelmadatter-4x3.jpg",
+      "teaser": "Pozole is a special occasion dish in Mexico, especially in Guerrero State. Restaurants called pozolerías specialize in it. This dish is a well known cure for hangovers and is often eaten in the wee hours of the morning as a preventive. Pozole is also popular in New Mexico, where it is usually spelled posole.",
+      "averageRating": "3.9"
+    },
+    {
+      "url": "http://www.whats4eats.com/meats/carnitas-de-puerco-recipe",
+      "title": "Carnitas de Puerco",
+      "img": "http://www.whats4eats.com/files/meats-carnitas-de-puerco-flickr-mccun934-2904750647-4x3.jpg",
+      "teaser": "Mexican carnitas are an amazing option for stuffing tacos, burritos and tamales. Slow-simmered pork, with a quick fry and the end, carnitas are easy to make, but do take some time. That makes them perfect for a slow cooker.",
+      "averageRating": "4.8"
+    },
+    {
+      "url": "http://www.whats4eats.com/pickles/jalapenos-en-escabeche-recipe",
+      "title": "Jalapeños en Escabeche ",
+      "img": "http://www.whats4eats.com/files/ingredients-peppers-jalapeno-flickr-lucianvenutian-898368349.jpg",
+      "teaser": "Sliced jalape&ntilde;os en escabeche are used as a garnish for a variety of Mexican dishes. They can also be chopped and added to soups and stews for an extra punch. Some hardy souls like to munch on them whole.",
+      "averageRating": "4.1"
+    },
+    {
+      "url": "http://www.whats4eats.com/sauces/guacamole-recipe",
+      "title": "Guacamole",
+      "img": "http://www.whats4eats.com/files/sauces-guacamole-flickr-stuart_spivack-435399381-4x3.jpg",
+      "teaser": "Guacamole is a popular condiment made of mashed and seasoned avocados. Guacamole originated in Mexico, but it is enjoyed throughout Central America, as well as in the American Southwest and in Tex-Mex cuisine. The name comes from the Aztec words for avocado (ahuacatl) and sauce (molli).",
+      "averageRating": "5"
+    },
+    {
+      "url": "http://www.whats4eats.com/beverages/horchata-de-arroz-recipe",
+      "title": "Horchata de Arroz",
+      "img": "http://www.whats4eats.com/files/beverages-horchata-de-arroz-flickr-sstrieu-12649458985-4x3.jpg",
+      "teaser": "Horchata (or-CHA-tah) is a milky white, sweet beverage that was introduced to Spain by the Moors. The original Spanish version is made with ground tiger nuts and is especially popular in Valencia. In Latin America, where the tiger nut is not commonly available, pulverized rice is used. In Mexico, horchata is one of the most common aguas frescas and is ladled from large glass jars set in ice.",
+      "averageRating": "3.8"
+    },
+    {
+      "url": "http://www.whats4eats.com/poultry/tostadas-de-pollo-recipe",
+      "title": "Tostadas de Pollo",
+      "img": "http://www.whats4eats.com/files/poultry-tostadas-de-pollo-flickr-dongkwan-540812245-4x3.jpg",
+      "teaser": "Tostadas are snack food in Mexico, made in street stalls throughout the country. The tostada shell itself is made by frying corn tortillas until they are crisp. The tostada shells then serve as a platform for all sorts of toppings from cheese and beans to shredded chicken to ceviche.",
+      "averageRating": "3.8"
+    }
+  ],
+  "travel": [
+    {
+      "url": "http://www.lonelyplanet.com/mexico/sights/architecture/na-bolom/item-a-1149322-id",
+      "img": null,
+      "travelCategory": " Architecture ",
+      "sightName": " Na Bolom ",
+      "sightDescription": "  An atmospheric museum-research center, Na Bolom for many years was the home of Swiss anthropologist and photographer Gertrude Duby-Blom (Trudy Blom; 1901–93) and her Danish archaeologist husband Frans Blom (1893–1963...  "
+    }
+  ]
+},
+{
+  "_id": "56c3d58f8c59f53b0faeee5d",
+  "countryName": "United Kingdom",
+  "food": [
+    {
+      "url": "http://www.whats4eats.com/fish/fish-and-chips-recipe",
+      "title": "Fish and Chips",
+      "img": "http://www.whats4eats.com/files/fish-fish-chips-flickr-10413717%40N08-Smabs-Sputzer-9355126330-4x3.jpg",
+      "teaser": "As simple as it is satisfying, fish and chips is classic English street food. The first chip shop opened in London in the mid 19th century, and by the 1930s the shops were located in towns all over England. Fish and chips was originally served in a rolled up newspaper with a sprinkling of salt and a shake or two of malt vinegar.",
+      "averageRating": "3.5"
+    }
+  ],
+  "films": [
+    {
+      "Title": "The Danish Girl",
+      "Year": "2015",
+      "Genre": "Biography, Drama, Romance",
+      "Director": "Tom Hooper",
+      "Actors": "Alicia Vikander, Eddie Redmayne, Tusse Silberg, Adrian Schiller",
+      "Plot": "A fictitious love story loosely inspired by the lives of Danish artists Lili Elbe and Gerda Wegener. Lili and Gerda's marriage and work evolve as they navigate Lili's groundbreaking journey as a transgender pioneer.",
+      "Country": "UK, USA, Belgium, Denmark, Germany",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMjA0NjA4NjE2Nl5BMl5BanBnXkFtZTgwNzIxNTY2NjE@._V1_SX300.jpg",
+      "imdbRating": "6.9",
+      "imdbID": "tt0810819"
+    }
+  ],
+  "travel" : [ 
+    { 
+      "url" : "http://www.lonelyplanet.com/united-kingdom/sights/universities-schools/christ-church/item-a-1286997-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/mastheads/545857891_medium.jpg", 
+      "travelCategory" : " Universities & Schools ", 
+      "sightName" : " Christ Church ", 
+      "sightDescription" : "  The largest of all of Oxford's colleges and the one with the grandest quad, Christ Church is also its most popular...  " 
+    }, 
+    { "url" : "http://www.lonelyplanet.com/united-kingdom/sights/historic/stonehenge/item-a-1218471-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/mastheads/GettyImages-177724819_high.jpg", 
+      "travelCategory" : " Historic ", 
+      "sightName" : " Stonehenge ", 
+      "sightDescription" : "  Ancient Stonehenge has had an ultramodern, £27-million makeover. It’s brought an impressive new visitor centre and the closure of an intrusive nearby road – now restored to grassland...  " 
+    }, 
+    { 
+      "url" : "http://www.lonelyplanet.com/united-kingdom/sights/castles-palaces-mansions/caerphilly-castle/item-a-1222172-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/mastheads/GettyImages-551422881_full.jpg", 
+      "travelCategory" : " Castles, Palaces & Mansions ", 
+      "sightName" : " Caerphilly Castle ", 
+      "sightDescription" : "  You could be forgiven for thinking that Caerphilly Castle – with its profusion of towers and crenellations reflected in a duck-filled lake – was a film set rather than an ancient monument...  " 
+    }
+  ]
+},
+{
+  "_id": "56c3e93a033148860ff27a0b",
+  "countryName": "Peru",
+  "films": [
+    {
+      "Title": "A Mouse Tale",
+      "Year": "2015",
+      "Genre": "Animation",
+      "Director": "David Bisbano, Mychal Simka",
+      "Actors": "Tom Arnold, Drake Bell, Miranda Cosgrove, Cary Elwes",
+      "Plot": "To save their kingdom from evil rodents, two young mice go on a quest to a forbidden world to find a legendary magic crystal that has the power to restore order to their kingdom.",
+      "Country": "Argentina, Peru, USA",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BNTA1MjIyMTcxMV5BMl5BanBnXkFtZTgwMDYwODM2MzE@._V1_SX300.jpg",
+      "imdbRating": "5.6",
+      "imdbID": "tt4250960"
+    }
+  ],
+  "food": [
+    {
+      "url": "http://www.whats4eats.com/desserts/alfajores-recipe",
+      "title": "Alfajores",
+      "img": "http://www.whats4eats.com/files/desserts-alfajores-flickr-22995353%40N08-3946003859.jpg",
+      "teaser": "While they have origins in Moorish Spain, alfajores are especially popular in South America. They are simple shortbread sandwich cookies with a sweet filling of dulce de leche. Different doughs are used for the cookies depending on the country. Some use normal flour dough, while others add cornstarch or even cassava flour for a more delicate crumb. This recipe uses a mixture of flour and cornstarch.",
+      "averageRating": "4.1"
+    }
+  ],
+  "travel" : [ 
+    { 
+      "url" : "http://www.lonelyplanet.com/peru/sights/religious/iglesia-de-santo-domingo/item-a-416072-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/bd83b61caf4b29b1aa96d1bb5619bb8d-iglesia-de-santo-domingo.jpg", 
+      "travelCategory" : " Religious ", 
+      "sightName" : " Iglesia de Santo Domingo ", 
+      "sightDescription" : "  One of Lima’s most storied religious sites, the Iglesia de Santo Domingo and its expansive convent are built on land granted to the Dominican Friar Vicente de Valverde, who accompanied Pizarro throughout the conques...  " 
+    }, 
+    { 
+      "url" : "http://www.lonelyplanet.com/peru/sights/religious/monasterio-de-santa-catalina/item-a-436942-id", 
+      "img" : "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/64fe3eb0d741c71bc8e0ced13d10c0cc-monasterio-de-santa-catalina.jpg", 
+      "travelCategory" : " Religious ", 
+      "sightName" : " Monasterio de Santa Catalina ", 
+      "sightDescription" : "  Even if you’re overdosed on colonial edifices, this convent shouldn’t be missed. Occupying a whole block and guarded by imposing high walls, it is one of the most fascinating religious buildings in Peru...  " 
+    }
+  ]
+},
+{
+  "_id": "56c53568cbb79e7e102826f0",
+  "countryName": "Canada",
+  "films": [
+    {
+      "Title": "My Struggle",
+      "Year": "2015",
+      "Genre": "Drama, Mystery, Sci-Fi",
+      "Director": "Chris Carter",
+      "Actors": "David Duchovny, Gillian Anderson, Mitch Pileggi, William B. Davis",
+      "Plot": "This 2016 pilot reintroduces \"The X-Files\" and reunites Agent Mulder with Dana Scully after the collapse of their relationship when Mulder is engaged by a TV host. Mulder proclaims new evidence that alien abductions have been faked.",
+      "Country": "USA",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYyMDAxODUwMF5BMl5BanBnXkFtZTgwOTMzOTY2NjE@._V1_SX300.jpg",
+      "imdbRating": "9.5",
+      "imdbID": "tt4549938"
+    },
+    {
+      "Title": "Raid",
+      "Year": "2013",
+      "Genre": "Action, Drama, History",
+      "Director": "Ciaran Donnelly",
+      "Actors": "Travis Fimmel, Katheryn Winnick, Clive Standen, Jessalyn Gilsig",
+      "Plot": "In the Great Hall of Kattegat, a seer reads Earl Haraldson's future and tells him that Ragnar Lothbrok searches for his death.",
+      "Country": "Ireland, Canada",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMTgxNDY3MTA0Nl5BMl5BanBnXkFtZTcwODc2MTgxOQ@@._V1_SX300.jpg",
+      "imdbRating": "8.4",
+      "imdbID": "tt2245922"
+    }
+  ],
+  "food": [
+    {
+      "url": "http://www.whats4eats.com/meats/ginger-beef-recipe",
+      "title": "Ginger Beef",
+      "img": "http://www.whats4eats.com/files/meats-ginger-beef-istock-10878487.jpg",
+      "teaser": "Ginger beef is a Canadianized version of an old beef stir fry standard from northeast China. In the 1970s, restauranteurs in Calgary altered the dish to suit Canadian tastes, making it sweeter and coating the beef with a crunchy, deep-fried batter. The popularity of ginger beef has been spreading to other areas of Canada in recent years.",
+      "averageRating": "4.6"
+    }
+  ],
+  "travel": [
+    {
+      "url": "/canada/sights/military/la-citadelle/item-a-427649-id",
+      "img": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/mastheads/GettyImages-474312740_super.jpg",
+      "travelCategory": " Military ",
+      "sightName": " La Citadelle ",
+      "sightDescription": "  Covering 2.3 sq km, North America's largest fort was begun by the French in the 1750s and completed by the British in 1850, intended to defend against an American invasion that never came...  "
+    },
+    {
+      "url": "/canada/sights/parks-gardens/vieux-port-de-montreal/item-a-1360419-id",
+      "img": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/da986e6309e12691036c9f0873114988-vieux-port-de-montreal.jpg",
+      "travelCategory": " Parks &amp; Gardens ",
+      "sightName": " Vieux-Port de Montréal ",
+      "sightDescription": "  Montréal's Old Port has morphed into a park and fun zone paralleling the mighty St Lawrence River for 2.5km and punctuated by four grand quais ...  "
+    },
+    {
+      "url": "/canada/sights/museums-galleries/musee-des-beaux-arts-de-montreal/item-a-392889-id",
+      "img": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/assets/image/741eabaddb8b693ffdd37ecd0b3468aabe4e3cb670e0b705f3f1279bd0cb8e1f/98ffbfa2f84931e6733567d2f77157402b203c0a613681aed9d6cfc7c41d3495.jpg",
+      "travelCategory": " Museums &amp; Galleries ",
+      "sightName": " Musée des Beaux-Arts de Montréal ",
+      "sightDescription": "  A must for art lovers, the Museum of Fine Arts has amassed several millennia worth of paintings, sculpture, decorative arts, furniture, prints, drawings and photographs...  "
+    }
+  ]
+}
+]
