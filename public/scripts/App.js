@@ -28,9 +28,7 @@ class App extends React.Component {
 						containerClass: 'init' }
 	}
 	componentDidMount(){
-		console.log('ok sure')
 		ajaxHelper(this, this.props.countriesUrl, function(self, data){
-			console.log(data)
 			self.setState({countries: data});
 		})
 

@@ -42,4 +42,20 @@ describe('<App />', function () {
     expect(App.prototype.componentDidMount.calledOnce).to.equal(true);
     done();
   });
+
+  it('select country should be called when a country is clicked', function (done) {
+    
+    const wrapper = mount(<App />);
+
+    $.ajax.restore();
+    const france = {countryName: "France", films: [], food: [], travel: []}
+    const spain = {countryName: "Spain", films: [], food: [], travel: []}
+    sinon.stub($, "ajax").yieldsTo("success", [france, spain])
+    const spy = sinon.spy();
+    wrapper.find('.country-panel').find('ul').childAt(1).simulate('click');
+
+    expect(wrapper.state().countryData.countryName).to.equal('Spain')
+    done()
+  });
+
 });
