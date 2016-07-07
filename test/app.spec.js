@@ -14,19 +14,6 @@ import Travel from '../public/scripts/travel'
 describe('<App />', function () {
   beforeEach(function(){
     sinon.stub($, "ajax").yieldsTo("success", ["France","Spain","Poland"])
-    // sinon.stub($, "ajax").yieldsTo("error", [1,2])
-    // sinon.stub($, 'ajax', function(options){
-    //   console.log('asaasa')
-    //   var dfd = $.Deferred();
-    //   if(options.success){
-    //     dfd.done(options.success({status_code:200, data: "abc"}))
-    //   }
-    //   if(options.error) dfd.fail(options.error);
-    //   dfd.success = dfd.done;
-    //   dfd.error = dfd.fail;
-
-    //   return dfd;
-    // })
   });
   afterEach(function(){
     $.ajax.restore();
@@ -40,11 +27,6 @@ describe('<App />', function () {
     done()
   });
 
-  it('component mounts', function (done) {
-    const wrapper = mount(<App/>);
-
-  });
-
   it('countries should be loaded initially', function (done) {
     const wrapper = mount(<App/>);
 
@@ -52,5 +34,12 @@ describe('<App />', function () {
     expect(wrapper.state().countries[1]).to.equal("Spain");
     expect(wrapper.state().countries[2]).to.equal("Poland");
     done()
+  });
+
+  it('calls componentDidMount', (done) => {
+    sinon.spy(App.prototype, 'componentDidMount');
+    const wrapper = mount(<App />);
+    expect(App.prototype.componentDidMount.calledOnce).to.equal(true);
+    done();
   });
 });

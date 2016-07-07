@@ -13,7 +13,7 @@ describe('<CountryPanel>', function () {
 
   it('should have a title of Countries but contain no countries when props are empty', function () {
     const wrapper = shallow(<CountryPanel data={[]}/>);
-    expect(wrapper.text()).to.contain('Countries')
+    expect(wrapper.find('h2').text()).to.contain('Countries')
     expect(wrapper.find(Country)).to.have.length(0);
   });
 });
