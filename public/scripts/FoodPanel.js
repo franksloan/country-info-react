@@ -7,7 +7,7 @@ class FoodPanel extends React.Component {
 	render(){
 		if ( !this.props.food ) {
          	return (
-         			<div className="food-panel">
+         			<div className={this.props.className}>
          				<h2>Food</h2>
          				<div className="box"></div>
          			</div>
@@ -17,7 +17,7 @@ class FoodPanel extends React.Component {
 			return (<Food key={id} recipe={recipe}>This is a film</Food>)
 		});
 		return (
-			<div className="food-panel">
+			<div className={this.props.className}>
 				<h2>Food</h2>
 				{food}
 			</div>

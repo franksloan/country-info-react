@@ -7,7 +7,7 @@ class FilmPanel extends React.Component {
 	render(){
 		if ( !this.props.films ) {
          	return (
-         			<div className="film-panel">
+         			<div className={this.props.className}>
          				<h2>Films</h2>
          				<div className="box"></div>
          			</div>
@@ -17,7 +17,7 @@ class FilmPanel extends React.Component {
 			return (<Film key={id} film={film} image=''>This is a film</Film>)
 		});
 		return (
-			<div className="film-panel">
+			<div className={this.props.className}>
 				<h2>Films</h2>
 				{films}
 			</div>

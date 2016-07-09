@@ -1,4 +1,5 @@
 import React from 'react'
+
 class Travel extends React.Component {
 	constructor(){
 		super()

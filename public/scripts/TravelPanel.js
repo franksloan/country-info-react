@@ -7,7 +7,7 @@ class TravelPanel extends React.Component {
 	render(){
 		if ( !this.props.travel ) {
          	return (
-         			<div className="travel-panel">
+         			<div className={this.props.className}>
          				<h2>Travel</h2>
          				<div className="box"></div>
          			</div>
@@ -17,7 +17,7 @@ class TravelPanel extends React.Component {
 			return (<Travel key={id} sight={sight}>This is a film</Travel>)
 		});
 		return (
-			<div className="travel-panel">
+			<div className={this.props.className}>
 				<h2>Travel</h2>
 				{travel}
 			</div>

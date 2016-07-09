@@ -10,7 +10,7 @@ body {
 	height: 100vh;
 }
 
-.container {
+.app-container {
 	display:flex;
 	overflow: hidden;
 }
@@ -55,4 +55,10 @@ img {
 }
 ul {
 	list-style-type: none;
+}
+.faded {
+	opacity: 0.2;
+	background-color: #000;
+	border-right-style: solid;
+	border-width: 1px;
 }
