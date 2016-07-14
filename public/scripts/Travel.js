@@ -5,12 +5,12 @@ class Travel extends React.Component {
 		super()
 	}
 	render(){
-		let sight = this.props.sight
+		let sight = this.props.item
 		return (
 			<div className="travel box">
-				<h4>{sight.sightName}</h4>
-				<a href={sight.url}><img src={sight.img} /></a>
-				<p>{sight.sightDescription}</p>
+				<h4>{sight.title}</h4>
+				<a href={sight.link}><img src={sight.image} /></a>
+				<p>{sight.description}</p>
 			</div>
 		)
 	}

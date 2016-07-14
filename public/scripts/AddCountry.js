@@ -35,7 +35,7 @@ class AddCountry extends React.Component {
 		this.props.fadePanels();
 	}
 	render(){
-		let countryInput = <Form className="commentForm" onSubmit={this.handleSubmit}>
+		let countryInput = <Form onSubmit={this.handleSubmit}>
 							<FormGroup bsSize="small">
 							      <FormControl 
 							      type="text" 

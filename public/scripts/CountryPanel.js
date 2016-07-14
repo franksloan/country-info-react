@@ -22,28 +22,22 @@ class CountryPanel extends React.Component {
 	}
 	handleCountrySubmit(country){
 		this.props.submitNewCountry(country)
-		this.props.fadeCountryPanel(true)
-		this.props.fadeFilmPanel(false)
 		this.setState({
 			activeCountry: country,
 			countriesEnabled: false
 		})
 	}
 	fadePanels(){
-		this.props.fadeFilmPanel(true)
-		this.props.fadeFoodPanel(true)
-		this.props.fadeTravelPanel(true)
+		this.props.fadePanels(false, true, true, true)
 	}
 	unfadePanels(){
-		this.props.unfadePanels()
+		this.props.fadePanels(false, false, false, false)
 	}
 	render(){
 		if ( !this.props.data.length > 0 ) {
 		    return (
 		    		<div className={this.props.className}>
 		    			<h2>Countries</h2>
-		    			<ul className="box">
-		    			</ul>
 		    		</div>
 		    	)
 		}
@@ -59,7 +53,7 @@ class CountryPanel extends React.Component {
 		return (
 			<div className={this.props.className}>
 				<h2>Countries</h2>
-				<ul className="box">
+				<ul>
 					{countries}
 				</ul>
 				<AddCountry 

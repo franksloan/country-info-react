@@ -1,16 +1,16 @@
 import React from 'react'
-let imdb = "http://www.imdb.com/title/"
+
 class Film extends React.Component {
 	constructor(){
 		super()
 	}
 	render(){
-		let film = this.props.film
+		let film = this.props.item
 		return (
 			<div className="film box">
-				<h4>{film.title} - {film.imdbRating}/10</h4>
-				<a href={imdb + film.imdbID}><img src={film.poster} /></a>
-				<p>{film.plot}</p>
+				<h4>{film.title} - {film.rating}/10</h4>
+				<a href={film.link}><img src={film.image} /></a>
+				<p>{film.description}</p>
 			</div>
 		)
 	}

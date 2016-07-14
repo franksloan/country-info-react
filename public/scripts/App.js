@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CountryPanel from './CountryPanel'
-import FilmPanel from './FilmPanel'
-import FoodPanel from './FoodPanel'
-import TravelPanel from './TravelPanel'
+import CategoryPanelMixin from './CategoryPanelMixin'
+import Film from './film'
+import Food from './food'
+import Travel from './travel'
 import $ from 'jquery'
 
 let ajaxHelper = (self, url, callback) => {
@@ -29,12 +30,14 @@ class App extends React.Component {
 						countryPanelClass: 'country-panel',
 						filmPanelClass: 'film-panel',
 						foodPanelClass : "food-panel",
-						travelPanelClass : "travel-panel" }
-		this.unfadePanels = this.unfadePanels.bind(this)
-		this.fadeCountryPanel = this.fadeCountryPanel.bind(this)
-		this.fadeFilmPanel = this.fadeFilmPanel.bind(this)
-		this.fadeFoodPanel = this.fadeFoodPanel.bind(this)
-		this.fadeTravelPanel = this.fadeTravelPanel.bind(this)
+						travelPanelClass : "travel-panel",
+						filmWizardMode: false,
+						foodWizardMode: false,
+						travelWizardMode: false }
+		this.fadePanels = this.fadePanels.bind(this)
+		this.submitNewFilm = this.submitNewFilm.bind(this)
+		this.submitNewFood = this.submitNewFood.bind(this)
+		this.submitNewTravelSight = this.submitNewTravelSight.bind(this)
 	}
 	componentDidMount(){
 		ajaxHelper(this, this.props.countriesUrl, function(self, data){
@@ -71,59 +74,113 @@ class App extends React.Component {
 		// adding a new country so set the data to blank
 		this.setState({
 			countries: countries,
-			countryData: {},
-			containerClass: 'init'
+			countryData: {films: []},
+			containerClass: 'init',
+			filmWizardMode: true
 		})
-		
+		this.fadePanels(true, false, true, true)
 	}
-	unfadePanels(){
+	submitNewFilm(filmItem){
+		var countryDataFilms = this.updateArray('films', filmItem)
+
+		if(this.state.filmWizardMode){
+			this.setCountryData(countryDataFilms, [], null)
+			this.setState({
+				filmWizardMode: false,
+				foodWizardMode: true
+			})
+			this.fadePanels(true, true, false, true)
+		} else {
+			// test this with adding a new film whilst food doesn't exist
+			this.setCountryData(countryDataFilms, null, null)
+		}
+	}
+	submitNewFood(foodItem){
+		var countryDataFood = this.updateArray('food', foodItem)
+		if(this.state.foodWizardMode){
+			this.setCountryData(null, countryDataFood, [])
+			this.setState({
+				foodWizardMode: false,
+				travelWizardMode: true
+			})
+			this.fadePanels(true, true, true, false);
+		} else {
+			// test this with adding a new film whilst food doesn't exist
+			this.setCountryData(null, countryDataFood, null)
+		}
+	}
+	submitNewTravelSight(travelSight){
+		var countryDataTravel = this.updateArray('travel', travelSight)
+		this.setCountryData(null, null, countryDataTravel)
+		if(this.state.travelWizardMode){
+			this.setState({
+				travelWizardMode: false
+			})
+			this.fadePanels(false, false, false, false)
+		}
+	}
+	setCountryData(filmsArray, foodArray, travelArray){
+		filmsArray = filmsArray || this.state.countryData.films
+		foodArray = foodArray || this.state.countryData.food
+		travelArray = travelArray || this.state.countryData.travel 
 		this.setState({
-			countryPanelClass : "country-panel",
-			filmPanelClass : "film-panel",
-			foodPanelClass : "food-panel",
-			travelPanelClass : "travel-panel"
+			countryData: 
+				{ 	
+					films: filmsArray,
+					food:  foodArray,
+					travel: travelArray
+				}
 		})
 	}
-	fadeCountryPanel(fade){
+	updateArray(category, item){
+		if(this.state.countryData[category] == 'undefined'){
+			return [food]
+		} else {
+			let countryDataArray = this.state.countryData[category].slice()
+			countryDataArray.push(item)
+			return countryDataArray
+		}
+	}
+	fadePanels(fadeCountryPanel, fadeFilmPanel, fadeFoodPanel, fadeTravelPanel){
 		this.setState({
-			countryPanelClass : fade ? "country-panel faded" : "country-panel"
+			countryPanelClass: fadeCountryPanel ? "country-panel faded" : "country-panel",
+			filmPanelClass : fadeFilmPanel ? "film-panel faded" : "film-panel",
+			foodPanelClass : fadeFoodPanel ? "food-panel faded" : "food-panel",
+			travelPanelClass : fadeTravelPanel ? "travel-panel faded" : "travel-panel"
 		})
 	}
-	fadeFilmPanel(fade){
-		this.setState({
-			filmPanelClass : fade ? "film-panel faded" : "film-panel" 
-		})
-	}
-	fadeFoodPanel(fade){
-		this.setState({
-			foodPanelClass : fade ? "food-panel faded" : "food-panel"
-		})
-	}
-	fadeTravelPanel(fade){
-		this.setState({
-			travelPanelClass : fade ? "travel-panel faded" : "travel-panel"
-		})
-	}
+	// <FilmPanel films={this.state.countryData.films} 
+	// 	className={this.state.filmPanelClass}
+	// 	submitNewFilm={this.submitNewFilm}
+	// 	wizardMode={this.state.filmWizardMode} />
 	render(){
+		let FilmPanel = CategoryPanelMixin(Film)
+		let FoodPanel = CategoryPanelMixin(Food)
+		let TravelPanel = CategoryPanelMixin(Travel)
 		return (<div className={this.state.containerClass}>
 			<CountryPanel data={this.state.countries} 
 				selectCountry={this.selectCountry.bind(this)}
 				submitNewCountry={this.submitNewCountry.bind(this)}
-				fadeCountryPanel={this.fadeCountryPanel}
-				fadeFilmPanel={this.fadeFilmPanel}
-				fadeFoodPanel={this.fadeFoodPanel}
-				fadeTravelPanel={this.fadeTravelPanel}
-				unfadePanels={this.unfadePanels}
+				fadePanels={this.fadePanels}
 				className={this.state.countryPanelClass} />
-			<FilmPanel films={this.state.countryData.films} 
-				fadeCountryPanel={this.fadeCountryPanel}
-				className={this.state.filmPanelClass}/>
-			<FoodPanel food={this.state.countryData.food} 
-				fadeCountryPanel={this.fadeCountryPanel}
-				className={this.state.foodPanelClass}/>
-			<TravelPanel travel={this.state.countryData.travel} 
-				fadeCountryPanel={this.fadeCountryPanel}
-				className={this.state.travelPanelClass}/>
+			<FilmPanel items={this.state.countryData.films} 
+				className={this.state.filmPanelClass}
+				submitNewItem={this.submitNewFilm}
+				wizardMode={this.state.filmWizardMode}
+				title="Films"
+				buttonText="Add film" />
+			<FoodPanel items={this.state.countryData.food} 
+				className={this.state.foodPanelClass}
+				submitNewItem={this.submitNewFood}
+				wizardMode={this.state.foodWizardMode}
+				title="Food"
+				buttonText="Add food" />
+			<TravelPanel items={this.state.countryData.travel} 
+				className={this.state.travelPanelClass}
+				submitNewItem={this.submitNewTravelSight}
+				wizardMode={this.state.travelWizardMode}
+				title="Travel"
+				buttonText="Add sight" />
 			</div>
 		)
 	}

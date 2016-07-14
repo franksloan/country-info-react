@@ -4,12 +4,12 @@ class Food extends React.Component {
 		super()
 	}
 	render(){
-		let recipe = this.props.recipe
+		let recipe = this.props.item
 		return (
 			<div className="food box">
-				<h4>{recipe.title} - {recipe.averageRating}/5</h4>
-				<a href={recipe.url}><img src={recipe.img} /></a>
-				<p>{recipe.teaser}</p>
+				<h4>{recipe.title} - {recipe.rating}/5</h4>
+				<a href={recipe.link}><img src={recipe.image} /></a>
+				<p>{recipe.description}</p>
 			</div>
 		)
 	}
