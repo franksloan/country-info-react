@@ -7,9 +7,7 @@ import TestUtils from "react-addons-test-utils";
 import $ from "jquery" 
 
 import App from '../public/scripts/app'
-import TravelPanel from '../public/scripts/travelPanel'
 import CountryPanel from '../public/scripts/countryPanel'
-import Travel from '../public/scripts/travel'
 
 describe('<App />', function () {
   beforeEach(function(){
@@ -23,7 +21,6 @@ describe('<App />', function () {
     const wrapper = mount(<App/>);
 
     expect(wrapper.find(CountryPanel)).to.have.length(1);
-    expect(wrapper.find(TravelPanel)).to.have.length(1);
     done()
   });
 

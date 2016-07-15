@@ -36,32 +36,31 @@ describe('<CountryPanel>', function () {
 
   it('should submit new country when child does', function () {
   	const submitNewCountrySpy = sinon.spy();
-  	const fadeCountryPanelSpy = sinon.spy();
-  	const fadeFilmPanelSpy = sinon.spy();
     const wrapper = shallow(<CountryPanel 
     							data={['Poland', 'Ukraine']}
-    							submitNewCountry={submitNewCountrySpy}
-    							fadeCountryPanel={fadeCountryPanelSpy}
-    							fadeFilmPanel={fadeFilmPanelSpy}/>);
+    							submitNewCountry={submitNewCountrySpy}/>);
    	wrapper.find(AddCountry).get(0).props.onCountrySubmit('Italy')
     expect(submitNewCountrySpy.calledWith('Italy')).to.be.true;
-    expect(fadeCountryPanelSpy.calledWith(true)).to.be.true;
-    expect(fadeFilmPanelSpy.calledWith(false)).to.be.true;
+    expect(wrapper.state().activeCountry).to.be.equal('Italy');
+    expect(wrapper.state().countriesEnabled).to.be.false;
   });
 
   it('should fade other panels', function () {
-  	const fadeTravelPanelSpy = sinon.spy();
-  	const fadeFoodPanelSpy = sinon.spy();
-  	const fadeFilmPanelSpy = sinon.spy();
+  	const fadePanelsSpy = sinon.spy();
     const wrapper = shallow(<CountryPanel 
     							data={['Poland', 'Ukraine']}
-    							fadeFoodPanel={fadeFoodPanelSpy}
-    							fadeTravelPanel={fadeTravelPanelSpy}
-    							fadeFilmPanel={fadeFilmPanelSpy}/>);
+    							fadePanels={fadePanelsSpy}/>);
    	wrapper.find(AddCountry).get(0).props.fadePanels()
-    expect(fadeFoodPanelSpy.calledWith(true)).to.be.true;
-    expect(fadeTravelPanelSpy.calledWith(true)).to.be.true;
-    expect(fadeFilmPanelSpy.calledWith(true)).to.be.true;
+    expect(fadePanelsSpy.calledWith(false, true, true, true)).to.be.true;
+  });
+
+  it('should unfade all panels', function () {
+  	const fadePanelsSpy = sinon.spy();
+    const wrapper = shallow(<CountryPanel 
+    							data={['Poland', 'Ukraine']}
+    							fadePanels={fadePanelsSpy}/>);
+   	wrapper.find(AddCountry).get(0).props.unfadePanels()
+    expect(fadePanelsSpy.calledWith(false, false, false, false)).to.be.true;
   });
 
 });
