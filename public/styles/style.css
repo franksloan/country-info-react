@@ -20,7 +20,7 @@ body {
 	margin: 0;
 	padding: 10px;
 	background-color: #2c3e50;
-;}
+}
 .film-panel {
 	width: 33%;
 	margin: 0;
@@ -38,9 +38,6 @@ body {
 	margin: 0;
 	padding: 10px;
 	background-color: #22a7f0;
-}
-.highlight {
-	font-weight: bold;
 }
 .box {
 	padding: 5px;
@@ -60,6 +57,33 @@ img {
 ul {
 	list-style-type: none;
 	padding: 5px;
+}
+.inactive {
+	color: #fff;
+}
+.active {
+	text-decoration: underline;
+	color: #fff;
+}
+.disabled {
+	color: #fff;
+	cursor: none;
+}
+a {
+	cursor: pointer;
+}
+.inactive:hover {
+	color: #22a7f0;
+	text-decoration: none;
+	font-size: 1.15em;
+}
+.active:hover {
+	color: #fff;
+}
+.disabled:hover {
+	color: #fff;
+	text-decoration: none;
+	cursor: none;
 }
 .faded {
 	opacity: 0.2;

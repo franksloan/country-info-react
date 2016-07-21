@@ -7,8 +7,7 @@ class AddCountry extends React.Component {
 		super()
 		this.state = {
 			showAddCountryButton: true,
-			newCountry: '',
-			buttonDisabled: false
+			newCountry: ''
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleCountryInput = this.handleCountryInput.bind(this)
@@ -28,11 +27,11 @@ class AddCountry extends React.Component {
 	}
 	handleBlur(e){
 		this.setState({showAddCountryButton: true})
-		this.props.unfadePanels();
+		this.props.fadePanels(false, false, false, false)
 	}
 	addCountry(){
 		this.setState({showAddCountryButton: false})
-		this.props.fadePanels();
+		this.props.fadePanels(false, true, true, true)
 	}
 	render(){
 		let countryInput = <Form onSubmit={this.handleSubmit}>
@@ -48,7 +47,7 @@ class AddCountry extends React.Component {
 
 		let addCountryButton = <Button onClick={this.addCountry} 
 										bsSize="sm"
-										disabled={this.state.buttonDisabled}
+										disabled={this.props.disabled}
 										>Add country</Button>
 
 		return (

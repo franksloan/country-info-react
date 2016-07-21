@@ -4,10 +4,29 @@ import { mount, shallow } from 'enzyme'
 import {expect} from 'chai'
 import sinon from 'sinon'
 import TestUtils from "react-addons-test-utils"; 
-import $ from "jquery" 
+import $ from "jquery"
+import mockery from "mockery"
 
 import App from '../public/scripts/app'
 import CountryPanel from '../public/scripts/countryPanel'
+import Film from '../public/scripts/film'
+import Food from '../public/scripts/food'
+import Travel from '../public/scripts/travel'
+import CategoryPanel from '../public/scripts/categoryPanel'
+let fakee = { CategoryPanelComponent: function(){} }
+
+describe('<App /> shallow', function(){
+   it('panels should be created', function () {
+
+    let spy = sinon.spy(CategoryPanel, 'create');
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.find(CountryPanel)).to.have.length(1);
+    expect(spy.calledWith(Film)).to.be.true;
+    expect(spy.calledWith(Food)).to.be.true;
+    expect(spy.calledWith(Travel)).to.be.true;
+  });
+})
 
 describe('<App />', function () {
   beforeEach(function(){
@@ -15,13 +34,6 @@ describe('<App />', function () {
   });
   afterEach(function(){
     $.ajax.restore();
-  });
-
-  it('country panel should be created', function (done) {
-    const wrapper = mount(<App/>);
-
-    expect(wrapper.find(CountryPanel)).to.have.length(1);
-    done()
   });
 
   it('countries should be loaded initially', function (done) {
@@ -45,9 +57,8 @@ describe('<App />', function () {
     const wrapper = mount(<App />);
 
     $.ajax.restore();
-    const france = {countryName: "France", films: [], food: [], travel: []}
     const spain = {countryName: "Spain", films: [], food: [], travel: []}
-    sinon.stub($, "ajax").yieldsTo("success", [france, spain])
+    sinon.stub($, "ajax").yieldsTo("success", spain)
     const spy = sinon.spy();
     wrapper.find('.country-panel').find('ul').childAt(1).simulate('click');
 

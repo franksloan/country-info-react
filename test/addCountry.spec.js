@@ -30,8 +30,7 @@ describe('<AddCountry>', function () {
   	const fadePanelsSpy = sinon.spy();
   	const unfadePanelsSpy = sinon.spy();
     const wrapper = shallow(
-    	<AddCountry fadePanels={fadePanelsSpy}
-    				unfadePanels={unfadePanelsSpy}/>);
+    	<AddCountry fadePanels={fadePanelsSpy}/>);
     
     wrapper.find(Button).simulate('click');
 
@@ -40,7 +39,7 @@ describe('<AddCountry>', function () {
     wrapper.find(FormControl).simulate('blur');
 
     expect(wrapper.find(Button)).to.have.length(1);
-    expect(unfadePanelsSpy.calledOnce).to.be.true;
+    expect(fadePanelsSpy.calledWith(false, false, false, false)).to.be.true;
   });
 
   it('input should be set whilst typing', function () {

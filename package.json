@@ -32,6 +32,7 @@
     "gulp-babel": "^6.1.2",
     "jsdom": "^9.3.0",
     "mocha": "^2.5.3",
+    "mockery": "^1.7.0",
     "react-addons-test-utils": "^15.1.0",
     "sinon": "^1.17.4",
     "webpack": "^1.13.1",

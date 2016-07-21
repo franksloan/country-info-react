@@ -4,14 +4,21 @@ class Country extends React.Component {
 		super()
 		this.selectCountry = this.selectCountry.bind(this)
 	}
-	selectCountry(country){
-		this.props.selectCountry(country)
+	selectCountry(){
+		console.log(this.props.disabled)
+		if(!this.props.disabled){
+			this.props.selectCountry(this.props.country)
+		}
 	}
 	render(){
+		const active = this.props.active
+		const disabled = this.props.disabled
 		return (
 			<li
-			onClick={this.selectCountry}
-			className={this.props.active ? "highlight" : "" }>{this.props.country}</li>
+				onClick={this.selectCountry}>
+				<a className={ disabled ? "disabled" : 
+								(active ? "active" : "inactive") }>
+								{this.props.country}</a></li>
 		)
 	}
 }

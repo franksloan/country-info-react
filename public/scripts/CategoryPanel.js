@@ -1,13 +1,15 @@
 import React from 'react'
 import AddItem from './AddItem'
 
-let CategoryPanelMixin = CategoryItem => class extends React.Component {
+let create = CategoryItem => class extends React.Component {
 	constructor(){
 		super()
-		this.handleItemSubmit = this.handleItemSubmit.bind(this)
+		this.handleBlur = this.handleBlur.bind(this)
 	}
-	handleItemSubmit(item){
-		this.props.submitNewItem(item)
+	handleBlur(){
+		if(this.props.wizardMode){
+			this.props.changeCategory()
+		}
 	}
 	render(){
 		var items;
@@ -17,11 +19,12 @@ let CategoryPanelMixin = CategoryItem => class extends React.Component {
 				return (<CategoryItem key={id} item={item} >This is a film</CategoryItem>)
 			})
 		}
-		let AddItemForm = <AddItem onItemSubmit={this.handleItemSubmit} 
+		let AddItemForm = <AddItem onItemSubmit={this.props.submitNewItem} 
 							wizardMode={this.props.wizardMode}
-							buttonText={this.props.buttonText}/>
+							buttonText={this.props.buttonText}
+							disabled={this.props.disabled}/>
 		return (
-			<div className={this.props.className}>
+			<div className={this.props.className} onBlur={this.handleBlur}>
 				<h2>{this.props.title}</h2>
 				{items}
 				{!this.props.items ? '' : AddItemForm}
@@ -30,4 +33,8 @@ let CategoryPanelMixin = CategoryItem => class extends React.Component {
 	}
 }
 
-export default CategoryPanelMixin
+let CategoryPanel = {
+	create: create
+}
+
+export default CategoryPanel

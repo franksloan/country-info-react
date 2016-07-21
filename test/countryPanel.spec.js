@@ -24,43 +24,53 @@ describe('<CountryPanel>', function () {
     expect(wrapper.find(Country)).to.have.length(0);
   });
 
-  it('should highlight the country when one is selected', function () {
-  	const selectCountrySpy = sinon.spy();
-    const wrapper = shallow(<CountryPanel 
-    							data={['Poland', 'Ukraine']}
-    							selectCountry={selectCountrySpy}/>);
-   	wrapper.find(Country).get(0).props.selectCountry('Poland')
-    expect(selectCountrySpy.calledOnce).to.be.true;
-    expect(wrapper.state().activeCountry).to.equal('Poland')
+  it('should be disabled', function () {
+    const wrapper = shallow(<CountryPanel data={['Poland', 'Ukraine']} disabled={true}/>);
+    expect(wrapper.find(Country).first().props().disabled).to.be.true;
   });
 
-  it('should submit new country when child does', function () {
-  	const submitNewCountrySpy = sinon.spy();
-    const wrapper = shallow(<CountryPanel 
-    							data={['Poland', 'Ukraine']}
-    							submitNewCountry={submitNewCountrySpy}/>);
-   	wrapper.find(AddCountry).get(0).props.onCountrySubmit('Italy')
-    expect(submitNewCountrySpy.calledWith('Italy')).to.be.true;
-    expect(wrapper.state().activeCountry).to.be.equal('Italy');
-    expect(wrapper.state().countriesEnabled).to.be.false;
+  it('should be active', function () {
+    const wrapper = shallow(<CountryPanel data={['Poland', 'Ukraine']} activeCountry={'Poland'}/>);
+    expect(wrapper.find(Country).first().props().active).to.be.true;
   });
 
-  it('should fade other panels', function () {
-  	const fadePanelsSpy = sinon.spy();
-    const wrapper = shallow(<CountryPanel 
-    							data={['Poland', 'Ukraine']}
-    							fadePanels={fadePanelsSpy}/>);
-   	wrapper.find(AddCountry).get(0).props.fadePanels()
-    expect(fadePanelsSpy.calledWith(false, true, true, true)).to.be.true;
-  });
+  // it('should highlight the country when one is selected', function () {
+  // 	const selectCountrySpy = sinon.spy();
+  //   const wrapper = shallow(<CountryPanel 
+  //   							data={['Poland', 'Ukraine']}
+  //   							selectCountry={selectCountrySpy}/>);
+  //  	wrapper.find(Country).get(0).props.selectCountry('Poland')
+  //   expect(selectCountrySpy.calledOnce).to.be.true;
+  //   expect(wrapper.state().activeCountry).to.equal('Poland')
+  // });
 
-  it('should unfade all panels', function () {
-  	const fadePanelsSpy = sinon.spy();
-    const wrapper = shallow(<CountryPanel 
-    							data={['Poland', 'Ukraine']}
-    							fadePanels={fadePanelsSpy}/>);
-   	wrapper.find(AddCountry).get(0).props.unfadePanels()
-    expect(fadePanelsSpy.calledWith(false, false, false, false)).to.be.true;
-  });
+  // it('should submit new country when child does', function () {
+  // 	const submitNewCountrySpy = sinon.spy();
+  //   const wrapper = shallow(<CountryPanel 
+  //   							data={['Poland', 'Ukraine']}
+  //   							submitNewCountry={submitNewCountrySpy}/>);
+  //  	wrapper.find(AddCountry).get(0).props.onCountrySubmit('Italy')
+  //   expect(submitNewCountrySpy.calledWith('Italy')).to.be.true;
+  //   expect(wrapper.state().activeCountry).to.be.equal('Italy');
+  //   expect(wrapper.state().countriesEnabled).to.be.false;
+  // });
+
+  // it('should fade other panels', function () {
+  // 	const fadePanelsSpy = sinon.spy();
+  //   const wrapper = shallow(<CountryPanel 
+  //   							data={['Poland', 'Ukraine']}
+  //   							fadePanels={fadePanelsSpy}/>);
+  //  	wrapper.find(AddCountry).get(0).props.fadePanels()
+  //   expect(fadePanelsSpy.calledWith(false, true, true, true)).to.be.true;
+  // });
+
+  // it('should unfade all panels', function () {
+  // 	const fadePanelsSpy = sinon.spy();
+  //   const wrapper = shallow(<CountryPanel 
+  //   							data={['Poland', 'Ukraine']}
+  //   							fadePanels={fadePanelsSpy}/>);
+  //  	wrapper.find(AddCountry).get(0).props.unfadePanels()
+  //   expect(fadePanelsSpy.calledWith(false, false, false, false)).to.be.true;
+  // });
 
 });

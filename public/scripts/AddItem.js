@@ -5,7 +5,6 @@ class AddItem extends React.Component {
 	constructor(){
 		super()
 		this.state = {
-			buttonDisabled: false,
 			showForm: false,
 			title: '',
 			rating: 5,
@@ -14,7 +13,7 @@ class AddItem extends React.Component {
 			description: ''
 		}
 		this.toggleButton = this.toggleButton.bind(this)
-		this.handleRange = this.handleRange.bind(this)
+		this.handleRating = this.handleRating.bind(this)
 		this.handleTitle = this.handleTitle.bind(this)
 		this.handleLink = this.handleLink.bind(this)
 		this.handleImage = this.handleImage.bind(this)
@@ -26,7 +25,7 @@ class AddItem extends React.Component {
 			showForm: !this.state.showForm
 		})
 	}
-	handleRange(e){
+	handleRating(e){
 		this.setState({
 			rating: e.target.value
 		})
@@ -52,15 +51,15 @@ class AddItem extends React.Component {
 		})
 	}
 	handleSubmit(e){
-
 		e.preventDefault()
 		const item = {
 			title: this.state.title,
 			rating: this.state.rating,
 			link: this.state.link,
 			image: this.state.image,
-			description: this.state.plot
+			description: this.state.description
 		}
+
 		this.props.onItemSubmit(item)
 		this.setState({
 			showForm: false,
@@ -73,9 +72,10 @@ class AddItem extends React.Component {
 	}
 	render(){
 		let upArrow = <Glyphicon glyph="chevron-up" />
-		let addItemButton = <Button onClick={this.toggleButton} 
+		let addItemButton = <Button onClick={this.toggleButton}
+										name='toggle'
 										bsSize="xsmall"
-										disabled={this.state.buttonDisabled}
+										disabled={this.props.disabled}
 										block
 										>{ this.state.showForm ? upArrow : this.props.buttonText }</Button>
 		let addItemForm = <Form className="box" onSubmit={this.handleSubmit}>
@@ -97,7 +97,7 @@ class AddItem extends React.Component {
 									max="10" 
 									step="0.1"
 									value={this.state.rating}
-									onChange={this.handleRange}/>
+									onChange={this.handleRating}/>
 								<p>{this.state.rating}</p>
 							</FormGroup>
 							<FormGroup bsSize="small" validationState={this.state.link.length == 0 ? "error" : "success"}>
