@@ -207,13 +207,6 @@
         "image": "http://ia.media-imdb.com/images/M/MV5BNTA1MjIyMTcxMV5BMl5BanBnXkFtZTgwMDYwODM2MzE@._V1_SX300.jpg",
         "rating": "5.6",
         "link": "http://www.imdb.com/title/tt4250960"
-      },
-      {
-        "title": "A",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
       }
     ],
     "food": [
@@ -223,13 +216,6 @@
         "image": "http://www.whats4eats.com/files/desserts-alfajores-flickr-22995353%40N08-3946003859.jpg",
         "description": "While they have origins in Moorish Spain, alfajores are especially popular in South America. They are simple shortbread sandwich cookies with a sweet filling of dulce de leche. Different doughs are used for the cookies depending on the country. Some use normal flour dough, while others add cornstarch or even cassava flour for a more delicate crumb. This recipe uses a mixture of flour and cornstarch.",
         "rating": "4.1"
-      },
-      {
-        "title": "a",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
       }
     ],
     "travel": [
@@ -246,13 +232,6 @@
         "travelCategory": " Religious ",
         "title": " Monasterio de Santa Catalina ",
         "description": "  Even if you’re overdosed on colonial edifices, this convent shouldn’t be missed. Occupying a whole block and guarded by imposing high walls, it is one of the most fascinating religious buildings in Peru...  "
-      },
-      {
-        "title": "q",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
       }
     ]
   },
@@ -319,220 +298,10 @@
     ]
   },
   {
+    "countryName": "Italy",
     "films": [
       {
-        "title": "Italian Job",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "food": [
-      {
-        "title": "Pasta",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "travel": [
-      {
-        "title": "Pisa",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "countryName": "Italy"
-  },
-  {
-    "_id": "56c3e93a033148860ff27a0b",
-    "countryName": "Peru",
-    "films": [
-      {
-        "title": "A Mouse Tale",
-        "year": "2015",
-        "genre": "Animation",
-        "director": "David Bisbano, Mychal Simka",
-        "actors": "Tom Arnold, Drake Bell, Miranda Cosgrove, Cary Elwes",
-        "description": "To save their kingdom from evil rodents, two young mice go on a quest to a forbidden world to find a legendary magic crystal that has the power to restore order to their kingdom.",
-        "country": "Argentina, Peru, USA",
-        "image": "http://ia.media-imdb.com/images/M/MV5BNTA1MjIyMTcxMV5BMl5BanBnXkFtZTgwMDYwODM2MzE@._V1_SX300.jpg",
-        "rating": "5.6",
-        "link": "http://www.imdb.com/title/tt4250960"
-      },
-      {
-        "title": "A",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "food": [
-      {
-        "link": "http://www.whats4eats.com/desserts/alfajores-recipe",
-        "title": "Alfajores",
-        "image": "http://www.whats4eats.com/files/desserts-alfajores-flickr-22995353%40N08-3946003859.jpg",
-        "description": "While they have origins in Moorish Spain, alfajores are especially popular in South America. They are simple shortbread sandwich cookies with a sweet filling of dulce de leche. Different doughs are used for the cookies depending on the country. Some use normal flour dough, while others add cornstarch or even cassava flour for a more delicate crumb. This recipe uses a mixture of flour and cornstarch.",
-        "rating": "4.1"
-      },
-      {
-        "title": "a",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "travel": [
-      {
-        "link": "http://www.lonelyplanet.com/peru/sights/religious/iglesia-de-santo-domingo/item-a-416072-id",
-        "image": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/bd83b61caf4b29b1aa96d1bb5619bb8d-iglesia-de-santo-domingo.jpg",
-        "travelCategory": " Religious ",
-        "title": " Iglesia de Santo Domingo ",
-        "description": "  One of Lima’s most storied religious sites, the Iglesia de Santo Domingo and its expansive convent are built on land granted to the Dominican Friar Vicente de Valverde, who accompanied Pizarro throughout the conques...  "
-      },
-      {
-        "link": "http://www.lonelyplanet.com/peru/sights/religious/monasterio-de-santa-catalina/item-a-436942-id",
-        "image": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/64fe3eb0d741c71bc8e0ced13d10c0cc-monasterio-de-santa-catalina.jpg",
-        "travelCategory": " Religious ",
-        "title": " Monasterio de Santa Catalina ",
-        "description": "  Even if you’re overdosed on colonial edifices, this convent shouldn’t be missed. Occupying a whole block and guarded by imposing high walls, it is one of the most fascinating religious buildings in Peru...  "
-      },
-      {
-        "title": "q",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ]
-  },
-  {
-    "_id": "56c3e93a033148860ff27a0b",
-    "countryName": "Peru",
-    "films": [
-      {
-        "title": "A Mouse Tale",
-        "year": "2015",
-        "genre": "Animation",
-        "director": "David Bisbano, Mychal Simka",
-        "actors": "Tom Arnold, Drake Bell, Miranda Cosgrove, Cary Elwes",
-        "description": "To save their kingdom from evil rodents, two young mice go on a quest to a forbidden world to find a legendary magic crystal that has the power to restore order to their kingdom.",
-        "country": "Argentina, Peru, USA",
-        "image": "http://ia.media-imdb.com/images/M/MV5BNTA1MjIyMTcxMV5BMl5BanBnXkFtZTgwMDYwODM2MzE@._V1_SX300.jpg",
-        "rating": "5.6",
-        "link": "http://www.imdb.com/title/tt4250960"
-      },
-      {
-        "title": "A",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "food": [
-      {
-        "link": "http://www.whats4eats.com/desserts/alfajores-recipe",
-        "title": "Alfajores",
-        "image": "http://www.whats4eats.com/files/desserts-alfajores-flickr-22995353%40N08-3946003859.jpg",
-        "description": "While they have origins in Moorish Spain, alfajores are especially popular in South America. They are simple shortbread sandwich cookies with a sweet filling of dulce de leche. Different doughs are used for the cookies depending on the country. Some use normal flour dough, while others add cornstarch or even cassava flour for a more delicate crumb. This recipe uses a mixture of flour and cornstarch.",
-        "rating": "4.1"
-      },
-      {
-        "title": "a",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "travel": [
-      {
-        "link": "http://www.lonelyplanet.com/peru/sights/religious/iglesia-de-santo-domingo/item-a-416072-id",
-        "image": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/bd83b61caf4b29b1aa96d1bb5619bb8d-iglesia-de-santo-domingo.jpg",
-        "travelCategory": " Religious ",
-        "title": " Iglesia de Santo Domingo ",
-        "description": "  One of Lima’s most storied religious sites, the Iglesia de Santo Domingo and its expansive convent are built on land granted to the Dominican Friar Vicente de Valverde, who accompanied Pizarro throughout the conques...  "
-      },
-      {
-        "link": "http://www.lonelyplanet.com/peru/sights/religious/monasterio-de-santa-catalina/item-a-436942-id",
-        "image": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/64fe3eb0d741c71bc8e0ced13d10c0cc-monasterio-de-santa-catalina.jpg",
-        "travelCategory": " Religious ",
-        "title": " Monasterio de Santa Catalina ",
-        "description": "  Even if you’re overdosed on colonial edifices, this convent shouldn’t be missed. Occupying a whole block and guarded by imposing high walls, it is one of the most fascinating religious buildings in Peru...  "
-      },
-      {
-        "title": "q",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ]
-  },
-  {
-    "_id": "56c3e93a033148860ff27a0b",
-    "countryName": "Peru",
-    "films": [
-      {
-        "title": "A Mouse Tale",
-        "year": "2015",
-        "genre": "Animation",
-        "director": "David Bisbano, Mychal Simka",
-        "actors": "Tom Arnold, Drake Bell, Miranda Cosgrove, Cary Elwes",
-        "description": "To save their kingdom from evil rodents, two young mice go on a quest to a forbidden world to find a legendary magic crystal that has the power to restore order to their kingdom.",
-        "country": "Argentina, Peru, USA",
-        "image": "http://ia.media-imdb.com/images/M/MV5BNTA1MjIyMTcxMV5BMl5BanBnXkFtZTgwMDYwODM2MzE@._V1_SX300.jpg",
-        "rating": "5.6",
-        "link": "http://www.imdb.com/title/tt4250960"
-      },
-      {
-        "title": "A",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "food": [
-      {
-        "link": "http://www.whats4eats.com/desserts/alfajores-recipe",
-        "title": "Alfajores",
-        "image": "http://www.whats4eats.com/files/desserts-alfajores-flickr-22995353%40N08-3946003859.jpg",
-        "description": "While they have origins in Moorish Spain, alfajores are especially popular in South America. They are simple shortbread sandwich cookies with a sweet filling of dulce de leche. Different doughs are used for the cookies depending on the country. Some use normal flour dough, while others add cornstarch or even cassava flour for a more delicate crumb. This recipe uses a mixture of flour and cornstarch.",
-        "rating": "4.1"
-      },
-      {
-        "title": "a",
-        "rating": "5",
-        "link": "",
-        "image": "",
-        "description": ""
-      }
-    ],
-    "travel": [
-      {
-        "link": "http://www.lonelyplanet.com/peru/sights/religious/iglesia-de-santo-domingo/item-a-416072-id",
-        "image": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/bd83b61caf4b29b1aa96d1bb5619bb8d-iglesia-de-santo-domingo.jpg",
-        "travelCategory": " Religious ",
-        "title": " Iglesia de Santo Domingo ",
-        "description": "  One of Lima’s most storied religious sites, the Iglesia de Santo Domingo and its expansive convent are built on land granted to the Dominican Friar Vicente de Valverde, who accompanied Pizarro throughout the conques...  "
-      },
-      {
-        "link": "http://www.lonelyplanet.com/peru/sights/religious/monasterio-de-santa-catalina/item-a-436942-id",
-        "image": "//images-resrc.staticlp.com/S=H185,U/C=W192,H185,XOF50,Y0/O=85/http://media.lonelyplanet.com/a/g/hi/t/64fe3eb0d741c71bc8e0ced13d10c0cc-monasterio-de-santa-catalina.jpg",
-        "travelCategory": " Religious ",
-        "title": " Monasterio de Santa Catalina ",
-        "description": "  Even if you’re overdosed on colonial edifices, this convent shouldn’t be missed. Occupying a whole block and guarded by imposing high walls, it is one of the most fascinating religious buildings in Peru...  "
-      },
-      {
-        "title": "q",
+        "title": "ZAATAR",
         "rating": "5",
         "link": "",
         "image": "",

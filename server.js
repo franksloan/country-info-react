@@ -44,7 +44,7 @@ var startServer = function(){
 		jsonAccess.addItem(req, res, 'travel')
 	});
 
-	server.post('/new_country/:country', function(req, res){
+	server.post('/new_country/', function(req, res){
 		jsonAccess.addCountry(req, res)
 	});
 

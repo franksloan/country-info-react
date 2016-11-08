@@ -5,25 +5,18 @@ class AddItem extends React.Component {
 	constructor(){
 		super()
 		this.state = {
-			showForm: false,
 			title: '',
 			rating: 5,
 			link: '',
 			image: '',
 			description: ''
 		}
-		this.toggleButton = this.toggleButton.bind(this)
 		this.handleRating = this.handleRating.bind(this)
 		this.handleTitle = this.handleTitle.bind(this)
 		this.handleLink = this.handleLink.bind(this)
 		this.handleImage = this.handleImage.bind(this)
 		this.handleDescription = this.handleDescription.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
-	}
-	toggleButton(){
-		this.setState({
-			showForm: !this.state.showForm
-		})
 	}
 	handleRating(e){
 		this.setState({
@@ -72,12 +65,12 @@ class AddItem extends React.Component {
 	}
 	render(){
 		let upArrow = <Glyphicon glyph="chevron-up" />
-		let addItemButton = <Button onClick={this.toggleButton}
+		let addItemButton = <Button onClick={this.props.toggleButton}
 										name='toggle'
 										bsSize="xsmall"
 										disabled={this.props.disabled}
 										block
-										>{ this.state.showForm ? upArrow : this.props.buttonText }</Button>
+										>{ this.props.showForm ? upArrow : this.props.buttonText }</Button>
 		let addItemForm = <Form className="box" onSubmit={this.handleSubmit}>
 							<FormGroup bsSize="small" validationState={this.state.title.length == 0 ? "error" : "success"} >
 								<ControlLabel>Title</ControlLabel>
@@ -135,9 +128,9 @@ class AddItem extends React.Component {
 						  </Form>
 		// In wizard mode only show the form - otherwise toggle the form
 		return(
-			<div className={this.props.className}>	
-				{this.props.wizardMode ? addItemForm : addItemButton }
-				{!this.props.wizardMode && this.state.showForm ? addItemForm: ''}
+			<div className={this.props.className}>
+				{ addItemButton }
+				{ this.props.showForm ? addItemForm : '' }
 			</div>
 		)
 		

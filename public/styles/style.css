@@ -4,15 +4,10 @@ body {
 	font-family: 'Aleo';
 	color: #fff;
 }
-.init {
-	display:flex;
-	overflow: hidden;
-	height: 100vh;
-}
 
 .app-container {
 	display:flex;
-	overflow: hidden;
+	min-height: 100vh;
 }
 
 .country-panel {

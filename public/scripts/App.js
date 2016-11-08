@@ -12,24 +12,29 @@ class App extends React.Component {
 		super()
 		this.state = {  activeCountry: '', 
 						countries: [ ],
-						countryData: {},
+						activeCountryData: {},
+						containerClass: 'app-container',
 						data: [],
-						containerClass: 'init',
+						categoryPanelNames: ['film-panel', 'food-panel', 'travel-panel'],
 						countryPanelClass: 'country-panel',
 						filmPanelClass: 'film-panel',
 						foodPanelClass : "food-panel",
 						travelPanelClass : "travel-panel",
-						filmWizardMode: false,
-						foodWizardMode: false,
-						travelWizardMode: false,
-						countryPanelDisabled: false }
-		this.fadePanels = this.fadePanels.bind(this)
+						showCountryInput: false,
+						wizardMode: false,
+						wizardCategory: "",
+						filmCategoryFocus: true,
+						foodCategoryFocus: true,
+						travelCategoryFocus: true }
 		this.submitNewFilm = this.submitNewFilm.bind(this)
 		this.submitNewFood = this.submitNewFood.bind(this)
 		this.submitNewTravelSight = this.submitNewTravelSight.bind(this)
-		this.closeFilmWizard = this.closeFilmWizard.bind(this)
-		this.closeFoodWizard = this.closeFoodWizard.bind(this)
-		this.closeTravelWizard = this.closeTravelWizard.bind(this)
+		this.closeAndResetWizard =  this.closeAndResetWizard.bind(this)
+		this.showCountryInput = this.showCountryInput.bind(this)
+		this.toggleFocus = this.toggleFocus.bind(this)
+		this.toggleFocusFilmCategory = this.toggleFocusFilmCategory.bind(this)
+		this.toggleFocusFoodCategory = this.toggleFocusFoodCategory.bind(this)
+		this.toggleFocusTravelCategory = this.toggleFocusTravelCategory.bind(this)
 	}
 	componentDidMount(){
 		AjaxHelper(this.props.countriesUrl, 'GET', null, function(data){
@@ -46,250 +51,245 @@ class App extends React.Component {
 		// If not fetch it from the server
 		if(countryIndex == -1){
 			AjaxHelper('country/'+ country, 'GET', null, function(countryData){
-				// self.setState({data: data, containerClass: 'app-container'});
-				// var countryData = data.find(function(element){
-				// 	return element.countryName == country;
-				// })
-				// self.setState({countryData: countryData});
-				console.log(countryData)
 				this.setState({
-					containerClass: 'app-container',
-					countryData: countryData
+					activeCountryData: countryData
 				})
 				this.updateData(countryData)
 			}.bind(this))
 		} else {
 			let countryData = this.state.data.find(element =>  element.countryName == country)
-			this.setState({countryData: countryData})
+			this.setState({activeCountryData: countryData})
 		}
 		
 	}
 
 	submitNewCountry(country){
-		// add to list
-		let countries = this.state.countries.slice()
-		countries.push(country)
 		// adding a new country so set the data to blank
 		this.setState({
 			activeCountry: country,
-			countries: countries,
-			countryData: {films: []},
-			containerClass: 'init',
-			filmWizardMode: true,
-			countryPanelDisabled: true
+			activeCountryData: {films: [], food: [], travel: []},
+			wizardMode: true,
+			filmCategoryFocus: true,
+			foodCategoryFocus: false,
+			travelCategoryFocus: false,
+			wizardCategory: 'film'
 		})
-		this.fadePanels(true, false, true, true)
 	}
 
 	// adds new film item to main data object and current country
 	submitNewFilm(filmItem){
-		let countryDataFilms = this.updateArray('films', filmItem)
-
-		if(this.state.filmWizardMode){
-			this.setCountryData(countryDataFilms, [], null)
-			this.setState({
-				filmWizardMode: false,
-				foodWizardMode: true
-			})
-			this.fadePanels(true, true, false, true)
+		const countryDataFilms = this.updateArray('films', filmItem)
+		const activeCountryData = this.setActiveCountryData(countryDataFilms, null, null)
+		this.updateData(activeCountryData)
+		if(this.state.wizardMode){
+			this.addActiveCountryToCountriesList()
+			this.saveNewCountry(activeCountryData)
+			this.closeAndResetWizard()
 		} else {
-			let countryData = this.setCountryData(countryDataFilms, null, null)
-			this.updateData(countryData)
 			const activeCountry = this.state.activeCountry
 			AjaxHelper('film/'+activeCountry, 'POST', filmItem, function(){
-				console.log('success')
+				console.log(filmItem.title + ' has been saved.')
 			})
 		}
 	}
 
-	// adds new food item to main data object and current country
+		// adds new food item to main data object and current country
 	submitNewFood(foodItem){
-		let countryDataFood = this.updateArray('food', foodItem)
-		if(this.state.foodWizardMode){
-			this.setCountryData(null, countryDataFood, [])
-			this.setState({
-				foodWizardMode: false,
-				travelWizardMode: true
-			})
-			this.fadePanels(true, true, true, false);
+		const countryDataFood = this.updateArray('food', foodItem)
+		const activeCountryData = this.setActiveCountryData(null, countryDataFood, null)
+		this.updateData(activeCountryData)
+		if(this.state.wizardMode){
+			this.addActiveCountryToCountriesList()
+			this.saveNewCountry(activeCountryData)
+			this.closeAndResetWizard()
 		} else {
-			let countryData = this.setCountryData(null, countryDataFood, null)
-			this.updateData(countryData)
 			// update db
 			const activeCountry = this.state.activeCountry
 			AjaxHelper('food/'+activeCountry, 'POST', foodItem, function(){
-				console.log('success')
+				console.log(foodItem.title + ' has been saved.')
 			})
 		}
 	}
 
 	// adds new travel sight item to main data object and current country
 	submitNewTravelSight(travelSight){
-		let countryDataTravel = this.updateArray('travel', travelSight)
-		let countryData = this.setCountryData(null, null, countryDataTravel)
-		// if a new travel sight has been submitted it is sufficient to add new country if
-		// in wizard mode or just add the new sight if not in wizard mode
-		if(this.state.travelWizardMode){
-			this.setState({
-				travelWizardMode: false,
-				countryPanelDisabled: false
-			})
-			this.fadePanels(false, false, false, false)
+		const countryDataTravel = this.updateArray('travel', travelSight)
+		const activeCountryData = this.setActiveCountryData(null, null, countryDataTravel)
+		this.updateData(activeCountryData)
+		if(this.state.wizardMode){
+			this.addActiveCountryToCountriesList()
+			this.saveNewCountry(activeCountryData)
+			this.closeAndResetWizard()
 		} else {
 			// update db
 			const activeCountry = this.state.activeCountry
 			AjaxHelper('travel/'+activeCountry, 'POST', travelSight, function(){
-				console.log('success')
+				console.log(travelSight.title + ' has been saved.')
 			})
 		}
-		this.updateData(countryData)
+		
+	}
+
+	closeAndResetWizard(){
+		this.setState({
+			activeCountry: '',
+			filmCategoryFocus: true,
+			foodCategoryFocus: true,
+			travelCategoryFocus: true,
+			wizardMode: false,
+			showCountryInput: false,
+			wizardCategory: ''
+		})
+	}
+
+	saveNewCountry(activeCountryData){
+		
+		AjaxHelper('new_country/', 'POST', activeCountryData, function(){
+			console.log(activeCountryData.countryName + ' has been saved.')
+		})
 	}
 
 	// if there is new data for a category add it to selected country otherwise keep exisitng data
-	setCountryData(filmsArray, foodArray, travelArray){
-		filmsArray = filmsArray || this.state.countryData.films
-		foodArray = foodArray || this.state.countryData.food
-		travelArray = travelArray || this.state.countryData.travel
-		let countryData = { 	
+	setActiveCountryData(filmsArray, foodArray, travelArray){
+		filmsArray = filmsArray || this.state.activeCountryData.films
+		foodArray = foodArray || this.state.activeCountryData.food
+		travelArray = travelArray || this.state.activeCountryData.travel
+		const countryData = { 	
+							countryName: this.state.activeCountry,
 							films: filmsArray,
 							food:  foodArray,
 							travel: travelArray
 						  }
 		this.setState({
-			countryData: countryData		
+			activeCountryData: countryData	
 		})
 		return countryData
 	}
 
+	addActiveCountryToCountriesList(){
+		const countries = this.state.countries.slice()
+		countries.push(this.state.activeCountry)
+		this.setState({countries: countries})
+	}
+
 	// update main data object on state
-	updateData(countryData){
+	updateData(activeCountryData){
 		let data = this.state.data;
-		const activeCountry = this.state.activeCountry
+		const activeCountryName = activeCountryData.countryName
 		// if the country exists then update the existing country
-		// otherwise add the new country the app's data
-		if(data.findIndex(element => element.countryName == activeCountry) > -1){
+		// otherwise add the new country the app's data 
+		if(data.findIndex(element => element.countryName == activeCountryName) > -1){
 			data = data.map(function(element, i){
 				if(element.countryName === activeCountry){
-					element.films = countryData.films
-					element.food = countryData.food
-					element.travel = countryData.travel
+					element.films = activeCountryData.films
+					element.food = activeCountryData.food
+					element.travel = activeCountryData.travel
 					return element
 				}
 				return element
 			})
 		} else {
-			const activeCountry = this.state.activeCountry
-			if(!countryData.countryName){
-				countryData.countryName = activeCountry
-			}
 			data = data.slice()
-			data.push(countryData)
-			AjaxHelper('new_country/'+activeCountry, 'POST', countryData, function(){
-				console.log('success')
-			})
+			data.push(activeCountryData)
 		}
 		this.setState({ data: data })
 	}
 
 	// creates an array with the new item or adds the item to already existing array for that category
 	updateArray(category, item){
-		if(this.state.countryData[category] == 'undefined'){
+		if(this.state.activeCountryData[category] == 'undefined'){
 			return [item]
 		} else {
-			let countryDataArray = this.state.countryData[category].slice()
+			let countryDataArray = this.state.activeCountryData[category].slice()
 			countryDataArray.push(item)
 			return countryDataArray
 		}
 	}
 
-	closeFilmWizard(){
-		if(this.state.filmWizardMode){
+	showCountryInput(){
+		this.setState({showCountryInput: true})
+	}
+
+	toggleFocus(){
+		if(this.state.wizardMode){
 			this.setState({
-				filmWizardMode: false,
-				foodWizardMode: true
+				filmCategoryFocus: false,
+				foodCategoryFocus: false,
+				travelCategoryFocus: false
 			})
-			this.setCountryData(null, [], null)
-			this.fadePanels(true, true, false, true)
 		}
 	}
 
-	closeFoodWizard(){
-		if(this.state.foodWizardMode){
+	// Chnage the category to film if that is clicked
+	toggleFocusFilmCategory(){
+		if(this.state.wizardMode && this.state.wizardCategory !== 'film'){
 			this.setState({
-				foodWizardMode: false,
-				travelWizardMode: true
+				filmCategoryFocus: !this.state.filmCategoryFocus,
+				foodCategoryFocus: false,
+				travelCategoryFocus: false,
+				wizardCategory: 'film'
 			})
-			this.setCountryData(null, null, [])
-			this.fadePanels(true, true, true, false)
 		}
 	}
 
-	closeTravelWizard(){
-		if(this.state.travelWizardMode){
+	toggleFocusFoodCategory(){
+		if(this.state.wizardMode && this.state.wizardCategory !== 'food'){
 			this.setState({
-				travelWizardMode: false,
-				countryPanelDisabled: false
+				foodCategoryFocus: !this.state.foodCategoryFocus,
+				filmCategoryFocus: false,
+				travelCategoryFocus: false,
+				wizardCategory: 'food'
 			})
-			this.fadePanels(false, false, false, false)
-			const countryData = this.state.countryData
-			console.log(countryData)
-			// If there was some data added for the new country then save the data
-			if(countryData.films.length > 0 || countryData.food.length > 0 || countryData.travel.length > 0){
-				this.updateData(countryData)
-			} else {
-				// If only the name of the country was set then remove it from the list
-				let countries = this.state.countries.slice()
-				countries.splice(countries.length - 1)
-				this.setState({
-					countries: countries
-				})
-			}
 		}
 	}
 
-	fadePanels(fadeCountryPanel, fadeFilmPanel, fadeFoodPanel, fadeTravelPanel){
-		this.setState({
-			countryPanelClass: fadeCountryPanel ? "country-panel faded" : "country-panel",
-			filmPanelClass : fadeFilmPanel ? "film-panel faded" : "film-panel",
-			foodPanelClass : fadeFoodPanel ? "food-panel faded" : "food-panel",
-			travelPanelClass : fadeTravelPanel ? "travel-panel faded" : "travel-panel"
-		})
+	toggleFocusTravelCategory(){
+		if(this.state.wizardMode && this.state.wizardCategory !== 'travel'){
+			this.setState({
+				travelCategoryFocus: !this.state.travelCategoryFocus,
+				filmCategoryFocus: false,
+				foodCategoryFocus: false,
+				wizardCategory: 'travel'
+			})
+		}
 	}
+
 	render(){
 		let FilmPanel = CategoryPanel.create(Film)
 		let FoodPanel = CategoryPanel.create(Food)
 		let TravelPanel = CategoryPanel.create(Travel)
-		return (<div className={this.state.containerClass}>
-			<CountryPanel data={this.state.countries} 
-				activeCountry={this.state.activeCountry}
-				selectCountry={this.selectCountry.bind(this)}
-				submitNewCountry={this.submitNewCountry.bind(this)}
-				fadePanels={this.fadePanels}
-				className={this.state.countryPanelClass}
-				disabled={this.state.countryPanelDisabled} />
-			<FilmPanel items={this.state.countryData.films} 
+		return (<div className= { this.state.containerClass }>
+			<CountryPanel data= { this.state.countries } 
+				activeCountry= { this.state.activeCountry }
+				showCountryInput= { this.showCountryInput }
+				selectCountry= { this.selectCountry.bind(this) }
+				submitNewCountry= { this.submitNewCountry.bind(this) }
+				closeAndResetWizard= { this.closeAndResetWizard }
+				className= { this.state.countryPanelClass }
+				toggleFocus= { this.toggleFocus }
+				wizardMode= { this.state.wizardMode }
+				showInput= { this.state.showCountryInput } />
+			<FilmPanel items={this.state.activeCountryData.films} 
 				className={this.state.filmPanelClass}
 				submitNewItem={this.submitNewFilm}
-				wizardMode={this.state.filmWizardMode}
-				changeCategory={this.closeFilmWizard}
 				title="Films"
 				buttonText="Add film"
-				disabled={this.state.countryPanelDisabled} />
-			<FoodPanel items={this.state.countryData.food} 
+				toggleFocus={this.toggleFocusFilmCategory}
+				focus={this.state.filmCategoryFocus} />
+			<FoodPanel items={this.state.activeCountryData.food} 
 				className={this.state.foodPanelClass}
 				submitNewItem={this.submitNewFood}
-				wizardMode={this.state.foodWizardMode}
-				changeCategory={this.closeFoodWizard}
 				title="Food"
 				buttonText="Add food"
-				disabled={this.state.countryPanelDisabled} />
-			<TravelPanel items={this.state.countryData.travel} 
+				toggleFocus={this.toggleFocusFoodCategory}
+				focus={this.state.foodCategoryFocus} />
+			<TravelPanel items={this.state.activeCountryData.travel} 
 				className={this.state.travelPanelClass}
 				submitNewItem={this.submitNewTravelSight}
-				wizardMode={this.state.travelWizardMode}
-				changeCategory={this.closeTravelWizard}
 				title="Travel"
-				buttonText="Add sight" />
+				buttonText="Add sight"
+				toggleFocus={this.toggleFocusTravelCategory}
+				focus={this.state.travelCategoryFocus} />
 			</div>
 		)
 	}

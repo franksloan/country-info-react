@@ -4,13 +4,21 @@ import AddItem from './AddItem'
 let create = CategoryItem => class extends React.Component {
 	constructor(){
 		super()
-		this.handleBlur = this.handleBlur.bind(this)
-	}
-	handleBlur(){
-		if(this.props.wizardMode){
-			this.props.changeCategory()
+		this.state = {
+			showForm: false
 		}
+		this.toggleButton = this.toggleButton.bind(this)
 	}
+	handleClick(name){
+		this.props.toggleFocus();
+	}
+
+	toggleButton(){
+		this.setState({
+			showForm: !this.state.showForm
+		})
+	}
+
 	render(){
 		var items;
 		// setup film components if there are films in the array
@@ -19,15 +27,19 @@ let create = CategoryItem => class extends React.Component {
 				return (<CategoryItem key={id} item={item} >This is a film</CategoryItem>)
 			})
 		}
-		let AddItemForm = <AddItem onItemSubmit={this.props.submitNewItem} 
-							wizardMode={this.props.wizardMode}
-							buttonText={this.props.buttonText}
-							disabled={this.props.disabled}/>
+		let AddItemForm = <AddItem onItemSubmit= { this.props.submitNewItem }
+							toggleButton= { this.toggleButton }
+							buttonText= { this.props.buttonText }
+							disabled= { !this.props.focus }
+							showForm= { this.state.showForm } />
+
+		let className = this.props.className + (!this.props.focus ? " faded" : "")
+
 		return (
-			<div className={this.props.className} onBlur={this.handleBlur}>
+			<div className={className} onClick={this.handleClick.bind(this)}>
 				<h2>{this.props.title}</h2>
 				{items}
-				{!this.props.items ? '' : AddItemForm}
+				{!this.props.items ? 'aa' : AddItemForm}
 			</div>
 		)
 	}

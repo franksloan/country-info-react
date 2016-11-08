@@ -5,7 +5,6 @@ class Country extends React.Component {
 		this.selectCountry = this.selectCountry.bind(this)
 	}
 	selectCountry(){
-		console.log(this.props.disabled)
 		if(!this.props.disabled){
 			this.props.selectCountry(this.props.country)
 		}

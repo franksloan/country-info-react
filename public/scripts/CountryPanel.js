@@ -7,6 +7,7 @@ class CountryPanel extends React.Component {
 	constructor(){
 		super()
 	}
+
 	render(){
 		if ( !this.props.data.length > 0 ) {
 		    return (
@@ -25,17 +26,18 @@ class CountryPanel extends React.Component {
 					disabled={this.props.disabled}/>
 				)
 		})
+		
 		return (
-			<div className={this.props.className}>
+			<div className={this.props.className} onClick={this.props.toggleFocus}>
 				<h2>Countries</h2>
 				<ul>
 					{countries}
 				</ul>
 				<AddCountry 
 					onCountrySubmit={this.props.submitNewCountry} 
-					fadePanels={this.props.fadePanels}
-					unfadePanels={this.props.unfadePanels}
-					disabled={this.props.disabled}/>
+					cancelInput = {this.props.closeAndResetWizard}
+					addCountry = {this.props.showCountryInput}
+					showInput = {this.props.showInput} />
 			</div>
 		)
 	}
