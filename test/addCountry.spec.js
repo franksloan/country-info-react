@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 import sinon from 'sinon';
-import {Button, ButtonGroup, FormGroup, FormControl, Form} from 'react-bootstrap'
+import {Button, ButtonGroup, FormGroup, FormControl, Form, InputGroup} from 'react-bootstrap'
 
 import AddCountry from '../public/scripts/addCountry';
 
@@ -10,7 +10,7 @@ describe('<AddCountry>', function () {
 
   it('button should be shown', function () {
     const wrapper = shallow(
-    	<AddCountry />);
+    	<AddCountry showInput={false}/>);
     
     expect(wrapper.find(Button)).to.have.length(1);
   });
@@ -18,28 +18,26 @@ describe('<AddCountry>', function () {
   it('button should be removed on click', function () {
   	const fadePanelsSpy = sinon.spy();
     const wrapper = shallow(
-    	<AddCountry fadePanels={fadePanelsSpy}/>);
-    
-    wrapper.find(Button).simulate('click');
+    	<AddCountry fadePanels={fadePanelsSpy}
+                  showInput={true}/>);
 
     expect(wrapper.find(Button)).to.have.length(0);
-    expect(fadePanelsSpy.calledOnce).to.be.true;
   });
 
-  it('button should be shown again when not focusing on input', function () {
-  	const fadePanelsSpy = sinon.spy();
-  	const unfadePanelsSpy = sinon.spy();
+  it('should be cancelled when input is exited', function () {
+  	const cancelInputSpy = sinon.spy();
+    const stopPropagationSpy = sinon.spy();
     const wrapper = shallow(
-    	<AddCountry fadePanels={fadePanelsSpy}/>);
-    
-    wrapper.find(Button).simulate('click');
+    	<AddCountry cancelInput={cancelInputSpy}
+                  showInput={true}/>);
 
     expect(wrapper.find(FormControl)).to.have.length(1);
 
-    wrapper.find(FormControl).simulate('blur');
+    let eStubOnClick =  { stopPropagation: stopPropagationSpy }
+    wrapper.find(InputGroup.Addon).simulate('click', eStubOnClick);
 
-    expect(wrapper.find(Button)).to.have.length(1);
-    expect(fadePanelsSpy.calledWith(false, false, false, false)).to.be.true;
+    expect(stopPropagationSpy.calledOnce).to.be.true;
+    expect(cancelInputSpy.calledOnce).to.be.true;
   });
 
   it('input should be set whilst typing', function () {
@@ -48,9 +46,8 @@ describe('<AddCountry>', function () {
   	const preventDefaultSpy = sinon.spy();
     const wrapper = shallow(
     	<AddCountry fadePanels={fadePanelsSpy}
-    				unfadePanels={unfadePanelsSpy}/>);
-    
-    wrapper.find(Button).simulate('click');
+    				unfadePanels={unfadePanelsSpy}
+            showInput={true}/>);
 
     // type Italy into input and test that it is set on the state
     let eStubOnChange = {target: { value: 'Italy'} }
@@ -60,16 +57,11 @@ describe('<AddCountry>', function () {
   });
 
   it('new country should be submitted on enter', function () {
-  	const fadePanelsSpy = sinon.spy();
-  	const unfadePanelsSpy = sinon.spy();
   	const onCountrySubmitSpy = sinon.spy();
   	const preventDefaultSpy = sinon.spy();
     const wrapper = shallow(
-    	<AddCountry fadePanels={fadePanelsSpy}
-    				unfadePanels={unfadePanelsSpy}
-    				onCountrySubmit={onCountrySubmitSpy}/>);
-    
-    wrapper.find(Button).simulate('click');
+    	<AddCountry onCountrySubmit={onCountrySubmitSpy}
+            showInput={true}/>);
 
     // type Italy into input
     let eStubOnChange = {target: { value: 'Italy'} }
@@ -81,7 +73,6 @@ describe('<AddCountry>', function () {
     let eStubOnSubmit =  { preventDefault: preventDefaultSpy }
     wrapper.find(Form).simulate('submit', eStubOnSubmit);
 
-    expect(wrapper.find(Button)).to.have.length(1);
     expect(onCountrySubmitSpy.calledOnce).to.be.true;
     // country should be cleared
     expect(wrapper.state().newCountry).to.equal('')

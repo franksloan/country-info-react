@@ -19,6 +19,9 @@ class AddCountry extends React.Component {
 
 	handleSubmit(e){
 		e.preventDefault();
+		this.setState({
+			newCountry: ''
+		})
 		var country = this.state.newCountry
 		this.props.onCountrySubmit(country)
 	}

@@ -26,6 +26,7 @@ class App extends React.Component {
 						filmCategoryFocus: true,
 						foodCategoryFocus: true,
 						travelCategoryFocus: true }
+		this.updateArray = this.updateArray.bind(this)
 		this.submitNewFilm = this.submitNewFilm.bind(this)
 		this.submitNewFood = this.submitNewFood.bind(this)
 		this.submitNewTravelSight = this.submitNewTravelSight.bind(this)

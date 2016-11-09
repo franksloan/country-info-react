@@ -9,57 +9,42 @@ import AddItem from '../public/scripts/AddItem';
 describe('<AddItem>', function () {
 
   it('button should be shown', function () {
-    const wrapper = shallow(
-    	<AddItem />);
+    const wrapper = shallow(<AddItem showForm={false}/>);
     
     expect(wrapper.find(Button)).to.have.length(1);
   });
 
-  it('form and two buttons should be shown on click', function () {
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+  it('form and two buttons should be shown', function () {
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
     expect(wrapper.find(Button)).to.have.length(2);
     expect(wrapper.find(Form)).to.have.length(1);
-    expect(wrapper.state().showForm).to.be.true;
   });
 
-  it('button should be shown on two clicks', function () {
-    const wrapper = shallow(<AddItem />);
+  it('button should be able to be clicked twice', function () {
+    const toggleButtonSpy = sinon.spy();
+    const wrapper = shallow(<AddItem toggleButton={toggleButtonSpy}/>);
     
     wrapper.find(Button).simulate('click');
+
+    expect(toggleButtonSpy.called).to.be.true;
     // click the same button again
     wrapper.find({name: 'toggle'}).simulate('click');
 
-    expect(wrapper.find(Button)).to.have.length(1);
-    expect(wrapper.find(Form)).to.have.length(0);
-    expect(wrapper.state().showForm).to.be.false;
+    expect(toggleButtonSpy.called).to.be.true;
   });
 
   it('form should contain 5 form groups and 1 button', function () {
-    const fadePanelsSpy = sinon.spy();
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
     expect(wrapper.find(Form).find(FormGroup)).to.have.length(5);
     expect(wrapper.find(Form).find(Button)).to.have.length(1);
   });
 
-  it('show form only in wizard mode', function () {
-    const wrapper = shallow(<AddItem wizardMode={true} />);
-
-    expect(wrapper.find(Button)).to.have.length(1);
-    expect(wrapper.find(Form)).to.have.length(1);
-  });
-
   it('title input should be set whilst typing', function () {
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
-    // type Italy into title and test that it is set on the state
+    // type string into title and test that it is set on the state
     let eStubOnChange = {target: { value: 'Rocky'} }
     let titleInputGroup = wrapper.find(FormGroup).filterWhere(n => n.childAt(0).childAt(0).text() === 'Title')
     titleInputGroup.childAt(1).simulate('change', eStubOnChange)
@@ -68,9 +53,7 @@ describe('<AddItem>', function () {
   });
 
   it('rating input should be set whilst typing', function () {
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
     // type Italy into title and test that it is set on the state
     let eStubOnChange = {target: { value: 9} }
@@ -81,9 +64,7 @@ describe('<AddItem>', function () {
   });
 
   it('link input should be set whilst typing', function () {
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
     // type Italy into title and test that it is set on the state
     let eStubOnChange = {target: { value: 'www.films.com'} }
@@ -94,9 +75,7 @@ describe('<AddItem>', function () {
   });
 
   it('image input should be set whilst typing', function () {
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
     // type Italy into title and test that it is set on the state
     let eStubOnChange = {target: { value: 'www.image.com'} }
@@ -107,9 +86,7 @@ describe('<AddItem>', function () {
   });
 
   it('description input should be set whilst typing', function () {
-    const wrapper = shallow(<AddItem />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem showForm={true}/>);
 
     // type Italy into title and test that it is set on the state
     let eStubOnChange = {target: { value: 'A boxing film'} }
@@ -122,9 +99,7 @@ describe('<AddItem>', function () {
   it('item should be submitted on click', function () {
     const onItemSubmitSpy = sinon.spy();
     const preventDefaultSpy = sinon.spy();
-    const wrapper = shallow(<AddItem onItemSubmit={onItemSubmitSpy} />);
-    
-    wrapper.find(Button).simulate('click');
+    const wrapper = shallow(<AddItem onItemSubmit={onItemSubmitSpy} showForm={true}/>);
 
     // type Italy into title and test that it is set on the state
     let titleStubOnChange = {target: { value: 'Rocky'} }
@@ -161,33 +136,5 @@ describe('<AddItem>', function () {
     expect(onItemSubmitSpy.args[0][0].title === 'Rocky').to.be.true;
     expect(onItemSubmitSpy.calledWith(item)).to.be.true;
   });
-
-  // it('new country should be submitted on enter', function () {
-  // 	const fadePanelsSpy = sinon.spy();
-  // 	const unfadePanelsSpy = sinon.spy();
-  // 	const onCountrySubmitSpy = sinon.spy();
-  // 	const preventDefaultSpy = sinon.spy();
-  //   const wrapper = shallow(
-  //   	<AddCountry fadePanels={fadePanelsSpy}
-  //   				unfadePanels={unfadePanelsSpy}
-  //   				onCountrySubmit={onCountrySubmitSpy}/>);
-    
-  //   wrapper.find(Button).simulate('click');
-
-  //   // type Italy into input
-  //   let eStubOnChange = {target: { value: 'Italy'} }
-  //   wrapper.find(FormControl).simulate('change', eStubOnChange);
-    
-  //   expect(wrapper.state().newCountry).to.equal('Italy')
-
-  //   // hit enter
-  //   let eStubOnSubmit =  { preventDefault: preventDefaultSpy }
-  //   wrapper.find(Form).simulate('submit', eStubOnSubmit);
-
-  //   expect(wrapper.find(Button)).to.have.length(1);
-  //   expect(onCountrySubmitSpy.calledOnce).to.be.true;
-  //   // country should be cleared
-  //   expect(wrapper.state().newCountry).to.equal('')
-  // });
 
 });

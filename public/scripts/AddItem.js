@@ -55,7 +55,6 @@ class AddItem extends React.Component {
 
 		this.props.onItemSubmit(item)
 		this.setState({
-			showForm: false,
 			title: '',
 			rating: 5,
 			link: '',
@@ -126,7 +125,7 @@ class AddItem extends React.Component {
 							      Submit
 							</Button>
 						  </Form>
-		// In wizard mode only show the form - otherwise toggle the form
+		// toggle the form
 		return(
 			<div className={this.props.className}>
 				{ addItemButton }

@@ -26,16 +26,6 @@ describe('<App /> shallow', function(){
     expect(spy.calledWith(Food)).to.be.true;
     expect(spy.calledWith(Travel)).to.be.true;
   });
-
-   it('array is created', function () {
-    
-    const wrapper = shallow(<App />);
-    console.log(wrapper.state())
-    const array = App.updateArray('films', 'New film');
-    
-    expect(array.length).to.equal(1)
-    expect(array[0]).to.equal('New film')
-  });
 })
 
 describe('<App />', function () {
@@ -72,7 +62,7 @@ describe('<App />', function () {
     const spy = sinon.spy();
     wrapper.find('.country-panel').find('ul').childAt(1).simulate('click');
 
-    expect(wrapper.state().countryData.countryName).to.equal('Spain')
+    expect(wrapper.state().activeCountryData.countryName).to.equal('Spain')
     done()
   });
 
