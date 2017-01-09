@@ -1,5 +1,6 @@
 import React from 'react'
-import {Button, ButtonGroup, FormGroup, FormControl, Form, ControlLabel, Glyphicon} from 'react-bootstrap'
+import AjaxHelper from './AjaxHelper'
+import {Button, ButtonGroup, FormGroup, FormControl, Form, ControlLabel, Glyphicon, InputGroup} from 'react-bootstrap'
 
 class AddItem extends React.Component {
 	constructor(){
@@ -17,6 +18,18 @@ class AddItem extends React.Component {
 		this.handleImage = this.handleImage.bind(this)
 		this.handleDescription = this.handleDescription.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.searchForItem = this.searchForItem.bind(this)
+	}
+	searchForItem(){
+		AjaxHelper('film/search/'+ this.state.title, 'GET', null, function(itemData){
+			this.setState({
+				title: itemData.title,
+				rating: itemData.rating,
+				link: itemData.link,
+				image: itemData.image,
+				description: itemData.description,
+			})
+		}.bind(this))
 	}
 	handleRating(e){
 		this.setState({
@@ -73,14 +86,17 @@ class AddItem extends React.Component {
 		let addItemForm = <Form className="box" onSubmit={this.handleSubmit}>
 							<FormGroup bsSize="small" validationState={this.state.title.length == 0 ? "error" : "success"} >
 								<ControlLabel>Title</ControlLabel>
+								<InputGroup>
 								<FormControl
 									type="text"
 									autoFocus
 									value={this.state.title}
 									onChange={this.handleTitle}/>
-								<FormControl.Feedback >
-									<Glyphicon glyph={this.state.title.length == 0 ? "remove" : "text-size"} />
-								</FormControl.Feedback >
+								
+								<InputGroup.Addon onClick={this.searchForItem}>
+										<Glyphicon glyph={this.state.title.length == 0 ? "remove" : "search"} />
+								</InputGroup.Addon >
+								</InputGroup>
 							</FormGroup>
 							<FormGroup bsSize="small" validationState={this.state.rating == 5 ? "error" : "success"}>
 								<ControlLabel>Rating</ControlLabel>

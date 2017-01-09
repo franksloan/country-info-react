@@ -7,11 +7,16 @@ var COUNTRIES = path.join(__dirname, 'jsonData/countries.json'),
 
 
 function readCountries(req, res){
-	fs.readFile(COUNTRIES, function(err, data){
+	fs.readFile(COUNTRY_DATA, function(err, data){
 		if(err){
 			console.error(err);
 		}
-		res.json(JSON.parse(data));
+		var jsonData = JSON.parse(data);
+		var countryNames = jsonData.map(function(countryData){
+			return countryData.countryName;
+		})
+
+		res.json(countryNames);
 	})
 }
 
@@ -37,7 +42,12 @@ function addItem(req, res, category){
 		var jsonData = JSON.parse(data);
 		jsonData = jsonData.map(function(countryData){
 			if(countryData.countryName == req.params.country){
-				countryData[category].push(req.body)
+				if(typeof countryData[category] == 'undefined'){
+					countryData[category] = [req.body]
+				} else {
+					countryData[category].push(req.body)
+
+				}
 			}
 			return countryData;
 		})
@@ -57,6 +67,7 @@ function addCountry(req, res){
 			console.error(err);
 		}
 		var jsonData = JSON.parse(data);
+		console.log(req.body);
 		jsonData.push(req.body)
 		fs.writeFile(COUNTRY_DATA, JSON.stringify(jsonData, null, 2), function(err) {
 			if (err) {

@@ -12,7 +12,7 @@ class App extends React.Component {
 		super()
 		this.state = {  activeCountry: '', 
 						countries: [ ],
-						activeCountryData: {},
+						activeCountryData: {'fms': 'tms'},
 						containerClass: 'app-container',
 						data: [],
 						categoryPanelNames: ['film-panel', 'food-panel', 'travel-panel'],
@@ -84,8 +84,9 @@ class App extends React.Component {
 		this.updateData(activeCountryData)
 		if(this.state.wizardMode){
 			this.addActiveCountryToCountriesList()
+			console.log(activeCountryData)
 			this.saveNewCountry(activeCountryData)
-			this.closeAndResetWizard()
+			this.closeAndResetWizard(activeCountryData.countryName)
 		} else {
 			const activeCountry = this.state.activeCountry
 			AjaxHelper('film/'+activeCountry, 'POST', filmItem, function(){
@@ -102,7 +103,7 @@ class App extends React.Component {
 		if(this.state.wizardMode){
 			this.addActiveCountryToCountriesList()
 			this.saveNewCountry(activeCountryData)
-			this.closeAndResetWizard()
+			this.closeAndResetWizard(activeCountryData.countryName)
 		} else {
 			// update db
 			const activeCountry = this.state.activeCountry
@@ -120,7 +121,7 @@ class App extends React.Component {
 		if(this.state.wizardMode){
 			this.addActiveCountryToCountriesList()
 			this.saveNewCountry(activeCountryData)
-			this.closeAndResetWizard()
+			this.closeAndResetWizard(activeCountryData.countryName)
 		} else {
 			// update db
 			const activeCountry = this.state.activeCountry
@@ -131,9 +132,9 @@ class App extends React.Component {
 		
 	}
 
-	closeAndResetWizard(){
+	closeAndResetWizard(country){
 		this.setState({
-			activeCountry: '',
+			activeCountry: country,
 			filmCategoryFocus: true,
 			foodCategoryFocus: true,
 			travelCategoryFocus: true,
@@ -144,9 +145,8 @@ class App extends React.Component {
 	}
 
 	saveNewCountry(activeCountryData){
-		
 		AjaxHelper('new_country/', 'POST', activeCountryData, function(){
-			console.log(activeCountryData.countryName + ' has been saved.')
+			console.log("New country, " + activeCountryData.countryName + ', has been saved.')
 		})
 	}
 
@@ -181,7 +181,7 @@ class App extends React.Component {
 		// otherwise add the new country the app's data 
 		if(data.findIndex(element => element.countryName == activeCountryName) > -1){
 			data = data.map(function(element, i){
-				if(element.countryName === activeCountry){
+				if(element.countryName === activeCountryName){
 					element.films = activeCountryData.films
 					element.food = activeCountryData.food
 					element.travel = activeCountryData.travel
@@ -198,7 +198,7 @@ class App extends React.Component {
 
 	// creates an array with the new item or adds the item to already existing array for that category
 	updateArray(category, item){
-		if(this.state.activeCountryData[category] == 'undefined'){
+		if(typeof this.state.activeCountryData[category] == 'undefined'){
 			return [item]
 		} else {
 			let countryDataArray = this.state.activeCountryData[category].slice()

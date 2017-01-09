@@ -38,8 +38,8 @@ let create = CategoryItem => class extends React.Component {
 		return (
 			<div className={className} onClick={this.handleClick.bind(this)}>
 				<h2>{this.props.title}</h2>
+				{ AddItemForm}
 				{items}
-				{!this.props.items ? 'aa' : AddItemForm}
 			</div>
 		)
 	}

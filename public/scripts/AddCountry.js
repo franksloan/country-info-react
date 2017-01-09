@@ -11,7 +11,7 @@ class AddCountry extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleCountryInput = this.handleCountryInput.bind(this)
 		this.handleCancel = this.handleCancel.bind(this)
-
+		this.clickAddCountry = this.clickAddCountry.bind(this)
 	}
 	handleCountryInput(e){
 		this.setState({newCountry: e.target.value})
@@ -19,9 +19,6 @@ class AddCountry extends React.Component {
 
 	handleSubmit(e){
 		e.preventDefault();
-		this.setState({
-			newCountry: ''
-		})
 		var country = this.state.newCountry
 		this.props.onCountrySubmit(country)
 	}
@@ -32,6 +29,13 @@ class AddCountry extends React.Component {
 			newCountry: ''
 		})
 		this.props.cancelInput()
+	}
+
+	clickAddCountry(){
+		this.setState({
+			newCountry: ''
+		})
+		this.props.addCountry()
 	}
 
 	render(){
@@ -50,7 +54,7 @@ class AddCountry extends React.Component {
 							</FormGroup>
 						   </Form>
 
-		let addCountryButton = <Button onClick={this.props.addCountry} 
+		let addCountryButton = <Button onClick={this.clickAddCountry} 
 										bsSize="sm"
 										>Add country</Button>
 		return (

@@ -89,3 +89,6 @@ a {
 .btn-xs {
 	margin-top: 5px;
 }
+.search-button {
+	border-style: none
+}

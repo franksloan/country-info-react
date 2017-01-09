@@ -74,8 +74,8 @@ describe('<AddCountry>', function () {
     wrapper.find(Form).simulate('submit', eStubOnSubmit);
 
     expect(onCountrySubmitSpy.calledOnce).to.be.true;
-    // country should be cleared
-    expect(wrapper.state().newCountry).to.equal('')
+    // country should not be cleared
+    expect(wrapper.state().newCountry).to.equal('Italy')
   });
 
 });

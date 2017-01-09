@@ -7,7 +7,8 @@ var express = require('express'),
 	webpackMiddleware = require('webpack-middleware'),
 	config = require('./webpack.config.js'),
 	compiler = webpack(config),
-	jsonAccess = require('./server/jsonAccess');
+	jsonAccess = require('./server/jsonAccess'),
+	externalApiAccess = require('./server/externalApiAccess');
 
 var COUNTRIES = path.join(__dirname, 'countries.json'),
 	COUNTRY_DATA = path.join(__dirname, 'country_data.json'),
@@ -35,6 +36,10 @@ var startServer = function(){
 	server.post('/film/:country', function(req, res){
 		jsonAccess.addItem(req, res, 'films')
 	});
+
+	server.get('/film/search/:title', function(req, res){
+		externalApiAccess.findFilm(req, res);
+	})
 
 	server.post('/food/:country', function(req, res){
 		jsonAccess.addItem(req, res, 'food')
